@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>NADER </title>
+  <!-- Stylesheets -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/magnific-popup.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet"> -->
+
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <!-- Responsive -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body  >
+
+  <div class="wrapper_box">
+
+    <!-- Preloader -->
+    <div class="loader-wrap">
+      <div class="preloader"></div>
+      <div class="layer layer-one"><span class="overlay"></span></div>
+      <div class="layer layer-two"><span class="overlay"></span></div>
+      <div class="layer layer-three"><span class="overlay"></span></div>
+    </div>
+
+    <!-- Main Header-->
+    <header class="main-header two">
+      <div class="header_top">
+        <div class="auto-container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="header_top_inner clearfix">
+                <div class="header_top_one_box pull-left">
+                  <h4>مرحباً بكم شركة الإنشاء والتميز</h4>
+                </div>
+                <div class="header_top_two_box pull-right">
+                  <div class="opening_hour">
+
+                    <p><span class="flaticon-clock-1"></span><span id="current-date"></span></p>
+                    <script>
+                      document.addEventListener("DOMContentLoaded", function () {
+                        const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                        const today = new Date();
+                        const dayName = daysOfWeek[today.getDay()];
+                        const hours = today.getHours().toString().padStart(2, '0');
+                        const minutes = today.getMinutes().toString().padStart(2, '0');
+                        const formattedDate = `${dayName}: ${hours}:${minutes}`;
+
+                        document.getElementById("current-date").textContent = formattedDate;
+                      });
+                    </script>
+                  </div>
+                  <div class="social_links_1">
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header Upper -->
+      <div class="header_upper-two">
+        <div class="auto-container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="header_upper-two_inner clearfix">
+                <div class="header_upper_two_box pull-left">
+                  <div class="logo" style="background-color: #11254087;">
+                    <a href="index.html"><img src="images/Logo.jpg" alt="" title=""></a>
+                  </div>
+                </div>
+                <div class="header_upper_two-right_box pull-right">
+                  <ul class="clearfix">
+                    <li>
+                      <div class="address_icon">
+                        <span class="flaticon-placeholder"></span>
+                      </div>
+                      <div class="address_title">
+                        <h6>العنوان</h6>
+                        <p>Flat 20, RAFHA KSA</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="address_icon">
+                        <span class="flaticon-phone-call-1"></span>
+                      </div>
+                      <div class="address_title">
+                        <h6>جوال</h6>
+                        <p><a href="tel:">+966 50 523 8751</a></p>
+                      </div>
+                    </li>
+                  </ul>
+                  <!-- <div class="header_upper_two_box-btn">
+                                        <a href="#">Get a Quote</a>
+                                    </div> -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--End Header Upper-->
+
+      <div class="main-header-two-nav-box clearfix">
+        <div class="auto-container">
+          <div class="main-header-two-nav-box-inner clearfix">
+            <div class="nav-outer">
+              <!--Mobile Navigation Toggler-->
+              <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+
+              <div class="nav-inner">
+                <!-- Main Menu -->
+                <nav class="main-menu two navbar-expand-xl navbar-dark">
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navigation">
+                      <li><a href="#lcation">موقعنا   </a></li>
+                      <li><a href="#contact">التواصل  </a></li>
+                      <li><a href="#working">اعمالنا </a>  </li>
+                      <li><a href="#service"> الخدمات</a> </li> 
+                      <li><a href="#pojact">مشاريعنا</a>  </li>
+                      <li><a href="#about">من نحن</a></li>
+                      <li class="dropdown current"><a href="index.html">الرئسية</a></li>
+                    </ul>
+                  </div>
+                </nav><!-- Main Menu End-->
+              </div>
+            </div>
+            <div class="icon-search-box">
+              <button class="dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+              <form action="#" class="dropdown-menu" aria-labelledby="searchDropdown">
+                <input type="text" placeholder="Search...">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--End Header Upper-->
+      <div class="sticky-header">
+        <div class="auto-container">
+          <div class="outer-container">
+            <div class="header-column">
+              <div class="logo-box">
+                <div class="logo"><a href="index.html"><img src="images/logo.jpg" alt="" title=""></a>
+                </div>
+              </div>
+            </div>
+            <div class="header-column">
+              <div class="nav-outer">
+                <!--Mobile Navigation Toggler-->
+                <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+
+                <div class="nav-inner">
+
+                  <!-- Main Menu -->
+                  <nav class="main-menu navbar-expand-xl navbar-dark">
+
+                    <div class="collapse navbar-collapse">
+                      <ul class="navigation">
+                      </ul>
+                    </div>
+                  </nav><!-- Main Menu End-->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu  -->
+      <div class="mobile-menu close-menu">
+        <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+        <nav class="menu-box">
+          <ul class="navigation"></ul>
+        </nav>
+      </div><!-- End Mobile Menu -->
+
+      <div class="nav-overlay">
+        <div class="cursor"></div>
+        <div class="cursor-follower"></div>
+      </div>
+    </header>
+    <!-- End Main Header -->
+<!-- --------------------------------------------------------------------------------- -->
+    <section class="video-section">
+      <video autoplay muted loop id="background-video">
+        <source src="./video/video.mp4" type="video/mp4">
+        متصفحك لا يدعم الفيديو.
+      </video>
+    </section>
+<!-- --------------------------------------------------------------------------------- -->
+    <!-- Bnner Section -->
+
+    <!-- End Bnner Section -->
+<BR></BR>
+    <!-- Start About Us One Section -->
+    <section id="about" class="about-us-one-section"  >
+      <div class="container">
+        <div class="thm-section-title text-center">
+          <h4 class="sub-title-shape-left section_title-subheading">  شركة الإنشاء والتميز </h4>
+          <h2> من هي شركة الإنشاء والتميز </h2>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-lg-6">
+            <div class="about-us-left wow slideInLeft" data-wow-delay="100ms">
+              <div class="about-us-img">
+                <img src="images/about.png" alt="">
+                <div class="experience-years">
+                  <div class="text">
+                    <p> عاما من الريادة</p>
+                  </div>
+                  <div class="year">
+                    <h3>25</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6">
+            <div class="about-us-right">
+              <div class="title">
+                <!-- <h2 class="sub-title-shape-left section_title-subheading">من نحن </h2>
+                <h2> شركة الإنشاء والتميز</h2> -->
+                <h5 dir="rtl"> شركة الإنشاء والتميز للمقاولات والصيانة هى
+                  شركة تطمح إلى تحقيق رؤية المملكة
+                  والريادة في تنفيذ المشاريع بأعلى
+                  مقاييس الجودة والسلامة والنمو المستمر
+                  لبناء مستقبل أفضل من إعمار لهذا البلد
+                  والمحافظة على مكتسباته والمساعدة في
+                  نهضة هذا البلد المبارك والمحافظة على
+                  اقتصاد هذا البلد ورفع كفاءة الأيدي
+                  العاملة, وتحقيق إنجازات عظيمة غير
+                  مسبوقة وتحقيق هذه الرؤية الطموحة من
+                  خلال تبني المشروعات والتوسيع فيها
+                  والاستفادة الكاملة من كل طاقات
+                  وإمكانات أبناء الوطن..</h5>
+              </div>
+              <div class="description">
+                <h5> كما نؤكد أن رؤية 2030 جاءت لتبلور كل
+                  جهود الجبارة التي بذلت في صورة خطة
+                  شاملة ومفصلة تلامس مختلف الاحتياجات
+                  وتلبي كافة التطلعات وهي تحتاج منا
+                  جميعا التكاتف والتعاون والعمل المتواصل
+                  من أجل تنفيذ بالشكل الصحيح وفق
+                  التوجيهات السديدة والرؤى الحكيمة لسيدي
+                  خادم الحرمين الشريفين.</h5>
+             
+              </div>
+                <!-- <div class="ceo-founder-details">
+                  <div class="ceo-founder-img">
+                    <img src="images/p5.jpg" alt="">
+                  </div>
+                  <div class="ceo-founder-content">
+                    <h3>John Franclin -<span>CEO & Founder</span></h3>
+                  </div>
+                </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About Us One Section -->
+        <!--Start Funfacts >المشاريع المنجز One Section -->
+         <section class="funfacts-one-section" > <!-- style="background-image: url(images/m4.jpg)" -->
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                <!--Funfacts One Single-->
+                <div class="funfacts-one-single wow fadeInUp" data-wow-delay="100ms">
+                  <div class="icon">
+                    <span class="flaticon-like"></span>
+                  </div>
+                  <div class="content count-box">
+                    <h2>
+                      <span class="timer" data-from="1" data-to="622" data-speed="5000" data-refresh-interval="50">622</span>
+                    </h2>
+                    <p>المشاريع المنجزة</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                <!--Funfacts One Single-->
+                <div class="funfacts-one-single wow fadeInUp" data-wow-delay="200ms">
+                  <div class="icon">
+                    <span class="flaticon-architect"></span>
+                  </div>
+                  <div class="content count-box">
+                    <h2>
+                      <span class="timer" data-from="1" data-to="4" data-speed="5000" data-refresh-interval="50">4</span>
+                    </h2>
+                    <p>مهندسين الخبراء</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                <!--Funfacts One Single-->
+                <div class="funfacts-one-single wow fadeInUp" data-wow-delay="300ms">
+                  <div class="icon">
+                    <span class="flaticon-medal"></span>
+                  </div>
+                  <div class="content count-box">
+                    <h2>
+                      <span class="timer" data-from="1" data-to="189" data-speed="5000" data-refresh-interval="50">289</span>
+                    </h2>
+                    <p>جوائز الفوز</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-6">
+                <!--Funfacts One Single-->
+                <div class="funfacts-one-single wow fadeInUp" data-wow-delay="400ms">
+                  <div class="icon">
+                    <span class="flaticon-carbon"></span>
+                  </div>
+                  <div class="content count-box">
+                    <h2>
+                      <span class="timer" data-from="1" data-to="64" data-speed="5000" data-refresh-interval="50">64+</span>
+                    </h2>
+                    <p>في جميع أنحاء المملكة </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!--End Funfact One Section مشاريعنا  على ارض الواقع -->
+        <section id="pojact" class="portfolio-one-section">
+          <div class="container">
+            <div class="thm-section-title text-center">
+              <h4 class="sub-title-shape-left section_title-subheading"> المشاريع  </h4>
+              <h2> مشاريعنا  على ارض الواقع </h2>
+            </div>
+            <!-- ********* *********-->
+            <div class="row text-center">
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/20.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+              
+                  </div>
+              
+                </div>
+              </div>
+              <!-- item 2 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="100ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/2.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 3 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="200ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/3.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 4 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/4.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 5 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/5.webp" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 6 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/6.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 7 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/7.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 7 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/8.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 7 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/9.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/13.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/15.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/22.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/16.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/17.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/19.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+        
+        
+              <!-- item 1 -->
+             
+              <!-- item 1 -->
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                  <div class="team-img">
+                    <img class="img-responsive" src="./images/projact/21.jpg" alt="" width="262" height="280">
+                  </div>
+                  <div class="team-info">
+                    <h3>.</h3>
+        
+                  </div>
+        
+                </div>
+              </div>
+             
+            </div>
+            <!-- ************ -->
+          </div>
+        </section>
+
+
+    <!-- Start Features One Section -->
+    <section id="service"  class="features-one-section">
+      <div class="container">
+
+        <div class="thm-section-title text-center">
+          <h4 class="sub-title-shape-left section_title-subheading">الخدمات</h4>
+          <h2>نحن نقدم أفضل الخدمات</h2>
+          <p>تدعم تكنولوجيا التصنيع المصانع في جميع أنحاء العالم.
+            المصانع هي قلب التصنيع..</p>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-robotic"></span>
+              </div>
+              <h3> التكنولوجيا الذكية</h3>
+              <p>نقدم أحدث الابتكارات التكنولوجية التي تساعد في تطوير عمليات التصنيع.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp" data-wow-delay="100ms">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-development"></span>
+              </div>
+              <h3>فريق رائع</h3>
+              <p>نمتلك فريقاً متميزاً من الخبراء والمختصين في كافة المجالات.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp" data-wow-delay="200ms">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-paint-roller"></span>
+              </div>
+              <h3>مواد ذات جودة عالية</h3>
+              <p>نستخدم أفضل المواد لضمان الجودة العالية في منتجاتنا.</p>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp" data-wow-delay="300ms">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-team"></span>
+              </div>
+              <h3>دعم كبير</h3>
+              <p>نوفر دعماً متميزاً لعملائنا لضمان رضاهم التام عن خدماتنا.</p>
+              </div>
+          </div>
+        </div>
+        <!-- ************************************************** -->
+
+        <div class="row">
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-crane"></span>
+              </div>
+              <h3>تأجير المعدات الثقيلة</h3>
+              <p>نقدم مجموعة واسعة من المعدات الثقيلة للإيجار لتلبية كافة احتياجات مشاريعك الإنشائية.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp" data-wow-delay="100ms">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-road-construction"></span>
+              </div>
+              <h3>تصليح الطرقات</h3>
+              <p>خبراء في إصلاح وصيانة الطرق لضمان سلامة وأداء الطرقات في جميع الظروف.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp" data-wow-delay="200ms">
+              <div class="features-one-sec-icon">
+                <span class="flaticon-gardening"></span>
+              </div>
+              <h3>بناء الحدائق</h3>
+              <p>نصمم ونبني حدائق جميلة وعملية تناسب جميع الأذواق والمساحات.</p>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-6">
+            <!--Features One Sec Single-->
+            <div class="features-one-sec-single wow fadeInUp" data-wow-delay="300ms">
+              <div class="features-one-sec-icon ">
+                <span class="flaticon-customer-support"></span>
+              </div>
+              <h3>خدمة العملاء الممتازة</h3>
+              <p>نوفر دعماً ممتازاً لعملائنا لضمان رضاهم الكامل عن خدماتنا ومنتجاتنا.</p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- ************************************************** -->
+      </div>
+    </section>
+    <!-- End Features One Section -->
+
+    <!--Start video One Section -->
+
+    <!--End video One Section -->
+
+
+
+    <!--Start Portfolio أعمالنا على ارض الواقع  One Section -->
+    <section id="working" class="portfolio-one-section" >
+      <div class="container">
+        <div class="thm-section-title text-center">
+          <h4 class="sub-title-shape-left section_title-subheading" > أعمالنا </h4>
+          <h2>  أعمالنا على ارض الواقع </h2>
+        </div>
+        <!-- ********* *********-->
+        <div class="row text-center">
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="0ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/11.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>. </h3>
+                
+              </div>
+              
+            </div>
+          </div>
+          <!-- item 2 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="100ms">
+              <div class="team-img">
+                <img class="img-responsive" src="images/n/12.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+              </div>
+              
+            </div>
+          </div>
+          <!-- item 3 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="200ms">
+              <div class="team-img">
+                <img class="img-responsive" src="images/n/15.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+              </div>
+              
+            </div>
+          </div>
+          <!-- item 4 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/13.jpg" alt=""width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+                
+              </div>
+              
+            </div>
+          </div>
+          <!-- item 5 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/14.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 6 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/16.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- item 7 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/17.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- item 7 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/18.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- item 7 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/19.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+
+              </div>
+
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/21.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/22.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/23.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/24.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/25.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/01.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+
+
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/30.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/31.jpg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/32.png" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/40.png" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/35.png" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/34.jpeg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/36.webp" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/36.jpeg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/37.webp" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/38.jpeg" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/39.webp" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+          <!-- item 1 -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+              <div class="team-img">
+                <img class="img-responsive" src="./images/n/41.png" alt="" width="262" height="280">
+              </div>
+              <div class="team-info">
+                <h3>.</h3>
+          
+              </div>
+          
+            </div>
+          </div>
+            <!-- item 1 -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="team-member wow fadeInUp" data-wow-duration="400ms" data-wow-delay="300ms">
+                <div class="team-img">
+                  <img class="img-responsive" src="./images/n/33.jpeg" alt="" width="262" height="280">
+                </div>
+                <div class="team-info">
+                  <h3>.</h3>
+            
+                </div>
+            
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+       <!-- ************ -->
+      </div>
+    </section>
+    <!--End Portfolio One Section -->
+<br>
+<br>
+<br>
+
+
+    <!--Start Testimonials >الشهادات - التوصيات One Section -->
+  <section  class="testimonials-one-section">
+    <div class="container">
+      <div class="thm-section-title text-center">
+        <h4 class="sub-title-shape-left section_title-subheading">الشهادات - التوصيات</h4>
+        <h2>ماذا يقول العملاء عنا</h2>
+      </div>
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="testimonials-one-carousel owl-theme owl-carousel">
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/main.jpg" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>نادر وضاح</h3>
+                  <h6>مطور</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>كانت تجربتي مع الفريق رائعة. لقد ساعدوني في تنفيذ مشروعي بسرعة واحترافية عالية.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-2.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>محمد علي</h3>
+                  <h6>مصمم</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>لقد أذهلني مستوى الجودة والدقة التي يقدمها الفريق في كل مشروع يعملون عليه.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-3.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>حامد وضاح</h3>
+                  <h6>مطور</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>الفريق يمتلك خبرة واسعة ومعرفة عميقة في مجال تطوير البرمجيات.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-1.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>فارس حامد</h3>
+                  <h6>مطور</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>أنا معجب تمامًا بالمستوى العالي من الاحترافية والالتزام بالمواعيد النهائية.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-2.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>  فيصل الحمدي</h3>
+                  <h6>مصمم</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>فريق مبدع للغاية، دائمًا يفاجئني بالأفكار الجديدة والمبتكرة.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-3.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>Mark </h3>
+                  <h6>مطور</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>خدماتهم دائماً ممتازة، وأحب العمل معهم على أي مشروع.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-1.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>Jack Farnes</h3>
+                  <h6>مطور</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>أنا معجب تمامًا بالمستوى العالي من الاحترافية والالتزام بالمواعيد النهائية.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-2.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>John Pedlock</h3>
+                  <h6>مصمم</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>فريق مبدع للغاية، دائمًا يفاجئني بالأفكار الجديدة والمبتكرة.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+            <!--Testimonials One Single-->
+            <div class="testimonials-one-single">
+              <div class="client-info">
+                <div class="client-img">
+                  <!-- <img src="images/testimonial/testi-img-3.png" alt=""> -->
+                </div>
+                <div class="client-content">
+                  <h3>Mark Joseph</h3>
+                  <h6>مطور</h6>
+                </div>
+              </div>
+              <div class="text-box">
+                <p>خدماتهم دائماً ممتازة، وأحب العمل معهم على أي مشروع.</p>
+              </div>
+              <div class="testimonials-quote">
+                <i class="fa fa-quote-left"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!--End Testimonials One Section -->
+
+    <!--Start Factory Solutions One Section -->
+    <section class="factory-solutions-one-section">
+      <div class="factory-solutions-one-section-bg"
+        style="background-image:url(images/cover.png)"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="factory-solutions-one-inner">
+              <h2>فيما يتعلق بمشكلة <br> خصيص العمليات والموارد <span> فإن حلول المصنع</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Start Factory Solutions One Section -->
+
+    <!--Start Why Choose Two Section -->
+    <section class="why-choose-two-section one">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="why-choose-two-image">
+              <!-- <img src="images/ind3.jpg" alt=""> -->
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <div class="why-choose-right-content">
+              <div class="most-trusted-skill">
+                <div class="most-trusted-skill-icon">
+                  <span class="flaticon-badge"></span>
+                </div>
+                <div class="most-trusted-text">
+                  <h3>المهارات الأكثر ثقة <br>  وتصديقًا</h3>
+                  <!-- <p>Lorem ipsum dolor amet <br> consectetur adipisicing elit <br> sed eiusmod tempor.
+                  </p> -->
+                </div>
+              </div>
+              <div class="progress-levels">
+                <!--Skill Box-->
+                <div class="progress-box">
+                  <div class="inner count-box">
+                    <div class="text">تاجير معدات </div>
+                    <div class="bar">
+                      <div class="bar-innner">
+                        <div class="skill-percent">
+                          <span class="count-text" data-speed="3000" data-stop="90">0</span>
+                          <span class="percent">%</span>
+                        </div>
+                        <div class="bar-fill" data-percent="90"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Skill Box-->
+                <div class="progress-box">
+                  <div class="inner count-box">
+                    <div class="text">تصليح طرقات </div>
+                    <div class="bar">
+                      <div class="bar-innner">
+                        <div class="skill-percent">
+                          <span class="count-text" data-speed="3000" data-stop="80">0</span>
+                          <span class="percent">%</span>
+                        </div>
+                        <div class="bar-fill" data-percent="80"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Skill Box-->
+                <div class="progress-box">
+                  <div class="inner count-box">
+                    <div class="text">بناء الحدائق</div>
+                    <div class="bar">
+                      <div class="bar-innner">
+                        <div class="skill-percent">
+                          <span class="count-text" data-speed="3000" data-stop="80">0</span>
+                          <span class="percent">%</span>
+                        </div>
+                        <div class="bar-fill" data-percent="80"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--Skill Box-->
+                <div class="progress-box">
+                  <div class="inner count-box">
+                    <div class="text">المواد الكسارات و الخرسانة </div>
+                    <div class="bar">
+                      <div class="bar-innner">
+                        <div class="skill-percent">
+                          <span class="count-text" data-speed="3000" data-stop="85">0</span>
+                          <span class="percent">%</span>
+                        </div>
+                        <div class="bar-fill" data-percent="85"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Why Choose Two Section -->
+
+    
+  <!--Start Contact One Section-->
+  <section class="contact-one-section" id="contact">
+    <div class="container">
+      <div class="thm-section-title text-center">
+        <h4 class="sub-title-shape-left section_title-subheading">تواصل</h4>
+        <h2>التواصل معنا - موقعنا</h2>
+      </div>
+      <div class="row">
+        <!-- <div class="col-xl-6">
+          <div class="contact-one-image">
+            <img src="images/con.jpg" alt="">
+          </div>
+        </div> -->
+        <div class="col-xl-12">
+          <form action="inc/sendemail.php" class="contact-one-form">
+            <div class="row">
+              <div class="col-xl-6">
+                <div class="input-box">
+                  <input type="text" name="name" placeholder="اسمك">
+                </div>
+              </div>
+              <div class="col-xl-6">
+                <div class="input-box">
+                  <input type="email" name="email" placeholder="بريدك الإلكتروني">
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="input-box">
+                  <input type="text" name="Subject" placeholder="الموضوع">
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="input-box">
+                  <textarea name="message" placeholder="رسالتك"></textarea>
+                </div>
+              </div>
+              <div class="col-xl-12">
+                <div class="contact__btn">
+                  <button type="submit" class="theme-btn">إرسال الرسالة</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--End Contact One Section-->
+  
+<section id="lcation" class="google_map">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3493.3967513946272!2d44.74897999999999!3d28.886556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDUzJzExLjYiTiA0NMKwNDQnNTYuMyJF!5e0!3m2!1sar!2s!4v1730886782908!5m2!1sar!2s"
+    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+  
+  <!--Start ContactinfoSection -->   
+  <section class="contactinfo" >
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-4 col-lg-4">
+                  <!--Contactinfo Single-->
+                  <div class="contactinfo-single">
+                      <div class="contactinfo-icon">
+                          <span class="far fa-envelope-open"></span>
+                      </div>
+                      <div class="contactinfo-content">
+                          <h4>البريد الاكتروني </h4>
+                          <a href="mailto:info@gamil.com">Waddah@gamil.com</a><br>
+                          <a href="mailto:info@gamil.com">waddah@gamil.com</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-lg-4">
+                  <!--Contactinfo Single-->
+                  <div class="contactinfo-single">
+                      <div class="contactinfo-icon">
+                          <span class="far fa-phone"></span>
+                      </div>
+                      <div class="contactinfo-content">
+                          <h4>هواتف </h4>
+                          <a href="tel:+812 555 33 44">014 678 000 4</a><br>
+                          <a href="tel:+812 555 33 44">059 123 333 4</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-lg-4">
+                  <!--Contactinfo Single-->
+                  <div class="contactinfo-single">
+                      <div class="contactinfo-icon">
+                          <span class="far fa-map-pin"></span>
+                      </div>
+                      <div class="contactinfo-content">
+                          <h4>يمكنكم زيارتنا </h4>
+                          <p>Flat 20, RAFHA KSA,<br>New York 11217, KSA.</p>
+                          <!-- <p>Flat 20, RAFHA KSA</p> -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--End ContactinfoSection --> 
+
+    <!--Start Footer Section -->
+    <footer class="footer-section" dir="rtl" >
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                  <div class="footer-widget-single footer-widget-about">
+                      <div class="footer-widget-title">
+                        <a href="https://nader-wadah.000webhostapp.com/My%20CV/indexMain.html">
+                            <h3  dir="ltr" >نادر وضاح </h3>
+                       </a>
+                      </div>
+                      <div class="footer-widget-about-text">
+                       
+                
+                 <a href="https://nader-wadah.000webhostapp.com/My%20CV/indexMain.html">
+                     <p>نحن شركة تهتم بتقديم أفضل الخدمات لعملائنا.</p>
+                  </a>
+                      </div>
+                      <div class="footer-widget-about-social">
+                          <a href="#"><i class="fab fa-facebook-square"></i></a>
+                          <a href="#"><i class="fab fa-twitter"></i></a>
+                          <a href="#"><i class="fab fa-dribbble"></i></a>
+                          <a href="#"><i class="fab fa-instagram"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                  <div class="footer-widget-single footer-widget-useful-links">
+                      <div class="footer-widget-title">
+                          <h3> ما تحتوية الصفحة </h3>
+                      </div>
+                      <ul  class="footer-widget-useful-links-list list-unstyled">
+                          <li><a href="#lcation">موقعنا </a></li>
+                          <li><a href="#contact">التواصل </a></li>
+                          <li><a href="#working">اعمالنا </a> </li>
+                          <li><a href="#service"> الخدمات</a> </li>
+                          <li><a href="#pojact">مشاريعنا</a> </li>
+                          <li><a href="#about">من نحن</a></li>
+                          <li class="dropdown current"><a href="index.html">الرئسية</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
+                  <div class="footer-widget-single footer-widget-contact">
+                      <div class="footer-widget-title">
+                          <h3>التواصل معنا</h3>
+                      </div>
+                      <div class="footer-widget_contact-info">
+                        <p dir="ltr" ><i  class="fa fa-location-circle"></i> Taiz , tz 11, YEMEN</p>
+                          <p dir="ltr" >
+                            <i class="fas fa-envelope mr-3"></i> <a style="color: #ffff;"
+                            href="mailto:naderwadah715@gmail.com">naderwadah715@gmail.com</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+        
+            </div>
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="footer-bottom">
+                    <p>
+                    © 2024 Copyright:
+                    <a class="text-white"
+                      href="https://wa.me/967737127316?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D9%85%D9%87%D9%86%D8%AF%D8%B3%20%D9%86%D8%A7%D8%AF%D8%B1%20%D9%84%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1">E.Nader
+                      Waddah</a></p>
+                    <br>
+                    <p>
+                    جميع الحقوق محفوضة:
+                    <a class="text-white"
+                      href="https://wa.me/967737127316?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D9%85%D9%87%D9%86%D8%AF%D8%B3%20%D9%86%D8%A7%D8%AF%D8%B1%20%D9%84%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1">المهندس
+                      / نادر وضاح القياضي </a></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+    <!--End Footer Section -->
+
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="icon fas fa-arrow-up"></span></div>
+
+
+
+
+
+  </div>
+  <!--End pagewrapper-->
+
+
+
+
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/jquery.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/swiper.min.js"></script>
+  <script src="./js/appear.js"></script>
+  <script src="./js/jquery.countTo.js"></script>
+  <script src="./js/isotope.js"></script>
+  <script src="./js/owl.js"></script>
+  <script src="./js/wow.js"></script>
+  <script src="./js/jquery.fancybox.js"></script>
+  <script src="./js/TweenMax.min.js"></script>
+  <script src="./js/jquery.magnific-popup.min.js"></script>
+  <script src="./js/custom.js"></script>
+</body>
+
+</html>
