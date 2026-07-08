@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شركة الإنشاء والتميز للمقاولات العامة | AL-INSHAA &amp; AL-TAMYOZ</title>
+  <meta name="description"
+    content="شركة سعودية متخصصة في مقاولات الطرق والبنية التحتية بمنطقة الحدود الشمالية — رصف، إسفلتة، صيانة، إنارة، وأسطول معدات متكامل.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { 950: '#08111d', 900: '#0e2238', 850: '#123049', 800: '#16324f', 700: '#1c4064' },
+            gold: { 400: '#ddb84e', 500: '#c9a227', 600: '#a9841b' },
+            sand: { 100: '#f4efe6', 50: '#fbf9f5' },
+            ink: { 900: '#1b222c', 700: '#3a4350' },
+            safety: { 600: '#c1521c' }
+          },
+          fontFamily: {
+            display: ['Cairo', 'sans-serif'],
+            body: ['IBM Plex Sans Arabic', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-sand-50 text-ink-900 font-body antialiased">
+
+  <!-- ===================== ROAD PROGRESS SPINE ===================== -->
+  <div class="road-spine" id="roadSpine" aria-hidden="true">
+    <div class="road-spine__track"></div>
+    <div class="road-spine__fill" id="roadFill"></div>
+    <div class="road-spine__marker" id="roadMarker">
+      <svg viewBox="0 0 48 48" width="22" height="22" fill="none">
+        <path
+          d="M6 32h4l3-9a3 3 0 0 1 2.8-2h13a3 3 0 0 1 3 2.3l2 8.7h4a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2a4 4 0 1 1-8 0H18a4 4 0 1 1-8 0H8a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2Z"
+          fill="#C9A227" stroke="#0e2238" stroke-width="1.5" />
+        <circle cx="14" cy="39" r="2.4" fill="#0e2238" />
+        <circle cx="30" cy="39" r="2.4" fill="#0e2238" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header id="siteHeader" class="fixed top-0 inset-x-0 z-40 transition-all duration-500">
+    <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-5 md:px-10 py-4">
+      <a href="#hero" class="flex items-center gap-3 group">
+        <span class="logo-badge">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
+            <path d="M12 3v14M12 3l6 6M12 3 6 9" stroke="#0e2238" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="hidden sm:flex flex-col leading-tight">
+          <span class="font-display font-extrabold text-sm md:text-base text-white nav-title">شركة الإنشاء
+            والتميز</span>
+          <span class="text-[10px] tracking-[0.2em] text-gold-400 font-mono nav-sub">GENERAL CONTRACTING CO.</span>
+        </span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-1 text-sm font-medium">
+        <li><a href="#about" class="nav-link">من نحن</a></li>
+        <li><a href="#services" class="nav-link">أعمالنا</a></li>
+        <li><a href="#fleet" class="nav-link">الأسطول</a></li>
+        <li><a href="#projects" class="nav-link">المشاريع</a></li>
+        <li><a href="#gallery" class="nav-link">معرض الصور</a></li>
+        <li><a href="#quality" class="nav-link">الجودة</a></li>
+      </ul>
+
+      <a href="#contact" class="hidden lg:inline-flex btn-gold">
+        تواصل معنا
+      </a>
+
+      <button id="menuBtn" class="lg:hidden text-white p-2" aria-label="القائمة">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden bg-navy-950/98 backdrop-blur border-t border-white/10">
+      <ul class="flex flex-col px-6 py-4 gap-1 text-white/90 font-medium">
+        <li><a href="#about" class="block py-2.5 mobile-link">من نحن</a></li>
+        <li><a href="#services" class="block py-2.5 mobile-link">نطاق الأعمال</a></li>
+        <li><a href="#why" class="block py-2.5 mobile-link">لماذا تختارنا</a></li>
+        <li><a href="#fleet" class="block py-2.5 mobile-link">المعدات والأسطول</a></li>
+        <li><a href="#projects" class="block py-2.5 mobile-link">المشاريع</a></li>
+        <li><a href="#gallery" class="block py-2.5 mobile-link">معرض الصور</a></li>
+        <li><a href="#quality" class="block py-2.5 mobile-link">السلامة والجودة</a></li>
+        <li><a href="#contact" class="block py-2.5 mobile-link text-gold-400">تواصل معنا</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="relative min-h-[100svh] flex items-end overflow-hidden bg-navy-950">
+    <div class="absolute inset-0">
+      <img src="assets/images/hero-collage.jpg" alt="مشاريع الشركة"
+        class="w-full h-full object-cover object-center opacity-45 scale-105">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="absolute inset-0 asphalt-noise opacity-30"></div>
+    </div>
+
+    <div class="relative z-10 max-w-[1400px] mx-auto w-full px-5 md:px-10 pb-16 md:pb-24 pt-40">
+      <p class="eyebrow text-gold-400 mb-4" data-aos="fade-up">COMPANY PROFILE — رفحاء · الحدود الشمالية</p>
+      <h1 class="font-display font-black text-white leading-[1.05] text-[2.5rem] sm:text-6xl md:text-7xl max-w-4xl"
+        data-aos="fade-up" data-aos-delay="80">
+        نبني الطريق نحو <span class="text-gold-400">رؤية 2030</span><br class="hidden md:block"> بخبرة تتجاوز 12 عاماً
+      </h1>
+      <p class="text-white/70 text-base md:text-lg mt-6 max-w-xl leading-relaxed" data-aos="fade-up"
+        data-aos-delay="160">
+        شركة سعودية متخصصة في تنفيذ أعمال المقاولات العامة والبنية التحتية بمنطقة الحدود الشمالية وما جاورها، معتمدين
+        على أسطول متكامل من المعدات الثقيلة ومحطة أسفلت خاصة.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mt-9" data-aos="fade-up" data-aos-delay="240">
+        <a href="#services" class="btn-gold">نطاق أعمالنا</a>
+        <a href="#contact" class="btn-outline">تواصل معنا</a>
+      </div>
+
+      <!-- quick stat strip -->
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-px mt-14 bg-white/10 rounded-2xl overflow-hidden border border-white/10"
+        data-aos="fade-up" data-aos-delay="320">
+        <div class="stat-chip"><span class="stat-num" data-count="76">0</span><span class="stat-label">مشروعاً
+            منفذاً</span></div>
+        <div class="stat-chip"><span class="stat-num" data-count="12" data-suffix="+">0</span><span
+            class="stat-label">عاماً من الخبرة</span></div>
+        <div class="stat-chip"><span class="stat-num" data-count="36">0</span><span class="stat-label">كادراً
+            متخصصاً</span></div>
+        <div class="stat-chip"><span class="stat-num" data-count="8">0</span><span class="stat-label">جهات حكومية</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="انتقل للأسفل">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- road divider -->
+  <div class="road-divider"></div>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section-pad bg-sand-50">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="grid md:grid-cols-2 gap-14 items-center">
+        <div data-aos="fade-up-right" class="relative">
+          <div class="img-frame">
+            <img src="assets/images/about.jpg" alt="أعمال رصف الطرق" class="w-full h-[420px] object-cover">
+          </div>
+          <div class="km-tag">
+            <span>KM</span><strong>01</strong>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100">
+          <p class="eyebrow text-navy-800 mb-3">ABOUT US</p>
+          <h2 class="section-title">من نحن</h2>
+          <p class="section-lead">
+            شركة سعودية متخصصة في تنفيذ أعمال <strong>المقاولات العامة والبنية التحتية</strong> في محافظة رفحاء والمناطق
+            المجاورة بمنطقة الحدود الشمالية. تعتمد الشركة على أسطول من المعدات الثقيلة والآليات الحديثة ومحطة أسفلت
+            إنتاج خاصة و كسارة.
+          </p>
+          <p class="section-lead">
+            إلى جانب كوادر فنية وإدارية مؤهلة، لتنفيذ المشاريع المدنية بجودة عالية والتزام تام بالمواعيد والمواصفات
+            الفنية المعتمدة، مما جعلها شريكاً موثوقاً للأمانات والبلديات.
+          </p>
+
+          <div class="mt-8 divide-y divide-navy-900/10 border-y border-navy-900/10">
+            <div class="flex justify-between py-3.5"><span class="text-ink-700">التخصص</span><span
+                class="font-semibold">مقاولات الطرق والبنية التحتية</span></div>
+            <div class="flex justify-between py-3.5"><span class="text-ink-700">نطاق العمل</span><span
+                class="font-semibold">الحدود الشمالية وما جاورها</span></div>
+            <div class="flex justify-between py-3.5"><span class="text-ink-700">المقر</span><span
+                class="font-semibold">محافظة رفحاء</span></div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 mt-8">
+            <div class="mini-stat"><strong data-count="36">0</strong><span>كادراً متخصصاً</span></div>
+            <div class="mini-stat"><strong data-count="76">0</strong><span>مشروعاً منفذاً</span></div>
+            <div class="mini-stat"><strong data-count="12" data-suffix="+">0</strong><span>عاماً من الخبرة</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VISION / MISSION / VALUES ===================== -->
+  <section id="vision" class="section-pad bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 asphalt-noise opacity-20"></div>
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <p class="eyebrow text-gold-400 mb-3">VISION · MISSION · VALUES</p>
+        <h2 class="section-title text-white">الرؤية والرسالة والقيم</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        <div class="vm-card" data-aos="fade-up">
+          <div class="vm-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" stroke="#c9a227" stroke-width="1.8" />
+              <circle cx="12" cy="12" r="8" stroke="#c9a227" stroke-width="1.4" opacity=".5" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-display font-bold text-white mb-3">رؤيتنا</h3>
+          <p class="text-white/65 leading-relaxed">أن نكون الشريك الأول الموثوق في مقاولات الطرق والبنية التحتية بمنطقة
+            الحدود الشمالية وما جاورها، عبر التميز في التنفيذ والجودة.</p>
+        </div>
+        <div class="vm-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="vm-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2Z" stroke="#c9a227"
+                stroke-width="1.6" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-display font-bold text-white mb-3">رسالتنا</h3>
+          <p class="text-white/65 leading-relaxed">تنفيذ مشاريع الطرق والرصف والصيانة بكفاءة عالية، معتمدين على أسطول
+            متكامل وكوادر مؤهلة، مع الالتزام الكامل بالمواصفات والمواعيد.</p>
+        </div>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="150" class="text-center mb-6">
+        <p class="text-gold-400/80 text-sm font-mono tracking-widest mb-4">قيمنا</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="value-pill">الجودة</span>
+          <span class="value-pill">الالتزام</span>
+          <span class="value-pill">السلامة</span>
+          <span class="value-pill">الإتقان</span>
+          <span class="value-pill">الموثوقية</span>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden mt-10" data-aos="zoom-in">
+        <img src="assets/images/compaction-banner.jpg" alt="معدات دك الطرق" class="w-full h-64 md:h-80 object-cover">
+      </div>
+    </div>
+  </section>
+
+  <div class="road-divider"></div>
+
+  <!-- ===================== SCOPE OF WORK ===================== -->
+  <section id="services" class="section-pad bg-sand-50">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14" data-aos="fade-up">
+        <div>
+          <p class="eyebrow text-navy-800 mb-3">SCOPE OF WORK</p>
+          <h2 class="section-title">نطاق الأعمال</h2>
+        </div>
+        <p class="section-lead max-w-md">ست خدمات متكاملة تغطي دورة حياة الطريق الكاملة — من الحفر والتسوية إلى الرصف
+          والصيانة الدورية.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="service-card" data-aos="fade-up">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" stroke="#0e2238" stroke-width="1.7"
+                stroke-linejoin="round" />
+            </svg></div>
+          <h3 class="font-display font-bold text-lg mb-2">مقاولات الطرق والبنية التحتية</h3>
+          <p class="text-xs font-mono tracking-wider text-gold-600 mb-3">ROADS &amp; INFRASTRUCTURE</p>
+          <p class="text-ink-700 text-sm leading-relaxed">تنفيذ وإنشاء الطرق والممرات والبنية التحتية داخل المدن
+            والمناطق الرئيسية.</p>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M3 18h18M4 18l2-9h12l2 9M8 9V6h8v3" stroke="#0e2238" stroke-width="1.7"
+                stroke-linejoin="round" />
+            </svg></div>
+          <h3 class="font-display font-bold text-lg mb-2">أعمال الرصف والإسفلت</h3>
+          <p class="text-xs font-mono tracking-wider text-gold-600 mb-3">PAVING &amp; ASPHALT</p>
+          <p class="text-ink-700 text-sm leading-relaxed">فرش الأسفلت ودكّه بمعدات متخصصة، مع إنتاج الخلطات من محطتنا
+            الخاصة.</p>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 20l6-13 4 8 3-5 3 10H4Z" stroke="#0e2238" stroke-width="1.7" stroke-linejoin="round" />
+            </svg></div>
+          <h3 class="font-display font-bold text-lg mb-2">أعمال الحفر والتسوية</h3>
+          <p class="text-xs font-mono tracking-wider text-gold-600 mb-3">EXCAVATION &amp; GRADING</p>
+          <p class="text-ink-700 text-sm leading-relaxed">تجهيز مواقع المشاريع بأعمال الحفر والتسوية الدقيقة تمهيداً
+            للتنفيذ.</p>
+        </div>
+
+        <div class="service-card" data-aos="fade-up">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2v6M12 8l-4 5h8l-4-5ZM6 22V13M18 22V13M4 22h16" stroke="#0e2238" stroke-width="1.7"
+                stroke-linejoin="round" />
+            </svg></div>
+          <h3 class="font-display font-bold text-lg mb-2">الإنارة والتركيبات</h3>
+          <p class="text-xs font-mono tracking-wider text-gold-600 mb-3">LIGHTING &amp; INSTALLATIONS</p>
+          <p class="text-ink-700 text-sm leading-relaxed">توريد وتركيب أعمدة الإنارة والكابلات لمرافق الطرق والمواقف
+            العامة.</p>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z" stroke="#0e2238" stroke-width="1.7"
+                stroke-linejoin="round" />
+            </svg></div>
+          <h3 class="font-display font-bold text-lg mb-2">الصيانة والتشغيل</h3>
+          <p class="text-xs font-mono tracking-wider text-gold-600 mb-3">MAINTENANCE &amp; OPERATION</p>
+          <p class="text-ink-700 text-sm leading-relaxed">صيانة وتأهيل الأرصفة والطرق والمرافق العامة وتشغيلها بكفاءة.
+          </p>
+        </div>
+
+        <div class="service-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16v6H4V4Zm2 6v10m12-10v10M4 20h16" stroke="#0e2238" stroke-width="1.7"
+                stroke-linejoin="round" />
+            </svg></div>
+          <h3 class="font-display font-bold text-lg mb-2">النظافة وتصريف المياه</h3>
+          <p class="text-xs font-mono tracking-wider text-gold-600 mb-3">CLEANING &amp; DRAINAGE</p>
+          <p class="text-ink-700 text-sm leading-relaxed">تنظيف المواقع وترحيل المخلفات وتأهيل شبكات تصريف مياه الأمطار.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY CHOOSE US ===================== -->
+  <section id="why" class="section-pad bg-white">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <p class="eyebrow text-navy-800 mb-3">WHY CHOOSE US</p>
+        <h2 class="section-title">لماذا تختارنا</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+        <div class="why-item" data-aos="fade-up">
+          <div class="sign-badge">01</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1.5">أسطول متكامل مملوك للشركة</h3>
+            <p class="text-ink-700 text-sm leading-relaxed">محطة أسفلت خاصة وكسارة ومعدات ثقيلة تمنحنا تحكماً كاملاً في
+              التنفيذ.</p>
+          </div>
+        </div>
+        <div class="why-item" data-aos="fade-up" data-aos-delay="60">
+          <div class="sign-badge">02</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1.5">خبرة تتجاوز 12 عاماً</h3>
+            <p class="text-ink-700 text-sm leading-relaxed">سجل حافل بـ 76 مشروعاً منفذاً بنجاح لدى جهات حكومية متعددة.
+            </p>
+          </div>
+        </div>
+        <div class="why-item" data-aos="fade-up" data-aos-delay="120">
+          <div class="sign-badge">03</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1.5">كوادر فنية وإدارية مؤهلة</h3>
+            <p class="text-ink-700 text-sm leading-relaxed">فريق من 36 موظفاً يغطي كل مراحل التنفيذ والإشراف والجودة.
+            </p>
+          </div>
+        </div>
+        <div class="why-item" data-aos="fade-up">
+          <div class="sign-badge">04</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1.5">الالتزام بالمواعيد والمواصفات</h3>
+            <p class="text-ink-700 text-sm leading-relaxed">تسليم المشاريع في مواعيدها وفق المواصفات الفنية المعتمدة.
+            </p>
+          </div>
+        </div>
+        <div class="why-item" data-aos="fade-up" data-aos-delay="60">
+          <div class="sign-badge">05</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1.5">شراكات موثوقة</h3>
+            <p class="text-ink-700 text-sm leading-relaxed">علاقات ممتدة مع الأمانات والبلديات في منطقة الحدود الشمالية.
+            </p>
+          </div>
+        </div>
+        <div class="why-item" data-aos="fade-up" data-aos-delay="120">
+          <div class="sign-badge">06</div>
+          <div>
+            <h3 class="font-bold text-lg mb-1.5">تحكم كامل في سلسلة التنفيذ</h3>
+            <p class="text-ink-700 text-sm leading-relaxed">من إنتاج الخلطة والفرش والدك إلى التسليم النهائي، تحت إشراف
+              واحد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRACK RECORD ===================== -->
+  <section id="track-record" class="section-pad bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 asphalt-noise opacity-20"></div>
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative text-center">
+      <p class="eyebrow text-gold-400 mb-3" data-aos="fade-up">TRACK RECORD</p>
+      <h2 class="section-title text-white" data-aos="fade-up">سابقة الأعمال</h2>
+      <p class="text-white/60 max-w-xl mx-auto mt-4 mb-14" data-aos="fade-up" data-aos-delay="80">سجل الأعمال ومحفظة
+        المشاريع المنفذة للفترة من 1436هـ حتى 1447هـ</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="tr-card" data-aos="zoom-in"><strong class="stat-num" data-count="34.4"
+            data-suffix="M">0</strong><span>إجمالي قيمة الأعمال (م.ريال)</span></div>
+        <div class="tr-card" data-aos="zoom-in" data-aos-delay="60"><strong class="stat-num"
+            data-count="76">0</strong><span>مشروعاً منفذاً</span></div>
+        <div class="tr-card" data-aos="zoom-in" data-aos-delay="120"><strong class="stat-num"
+            data-count="8">0</strong><span>جهات حكومية متعاقدة</span></div>
+        <div class="tr-card" data-aos="zoom-in" data-aos-delay="180"><strong class="stat-num"
+            data-count="12">0</strong><span>عاماً من الخبرة المتصلة</span></div>
+      </div>
+
+      <div
+        class="mt-6 rounded-2xl bg-white/5 border border-white/10 p-6 md:p-7 flex flex-col md:flex-row items-center justify-between gap-4 text-right"
+        data-aos="fade-up">
+        <div>
+          <p class="text-white font-semibold text-lg">مشاريع بأكثر من مليون ريال</p>
+          <p class="text-white/55 text-sm mt-1">7 مشاريع كبرى لدى الأمانات والبلديات — أكبرها 4.07 مليون ريال</p>
+        </div>
+        <div class="font-mono text-gold-400 text-2xl md:text-3xl font-bold whitespace-nowrap">SAR 16,825,125</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="road-divider road-divider--light"></div>
+
+  <!-- ===================== PROJECTS TABLE ===================== -->
+  <section id="projects" class="section-pad bg-sand-50">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10" data-aos="fade-up">
+        <div>
+          <p class="eyebrow text-navy-800 mb-3">SELECTED PROJECTS</p>
+          <h2 class="section-title">أبرز المشاريع المنفذة</h2>
+        </div>
+        <p class="section-lead max-w-md">نماذج من 76 مشروعاً منفذاً — مرتبة حسب القيمة التعاقدية.</p>
+      </div>
+
+      <div class="table-wrap" data-aos="fade-up">
+        <table class="projects-table">
+          <thead>
+            <tr>
+              <th class="w-12">م</th>
+              <th>تفاصيل المشروع</th>
+              <th>الجهة المتعاقدة</th>
+              <th class="text-left">القيمة (ر.س)</th>
+            </tr>
+          </thead>
+          <tbody id="projectsBody">
+            <!-- rows injected by script.js -->
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-sm text-ink-700 mt-6">إجمالي قيمة الأعمال المنفذة: <strong class="font-mono">34,439,981
+          SAR</strong> عبر 76 عقداً ومشروعاً</p>
+    </div>
+  </section>
+
+  <!-- ===================== CLIENTS ===================== -->
+  <section id="clients" class="section-pad bg-white">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-6" data-aos="fade-up">
+        <p class="eyebrow text-navy-800 mb-3">CLIENTS &amp; ENTITIES</p>
+        <h2 class="section-title">أبرز العملاء والجهات</h2>
+        <p class="section-lead mt-4">نفخر بثقة الجهات الحكومية والبلديات في منطقة الحدود الشمالية وما جاورها، والتي
+          تعاقدت معنا لتنفيذ مشاريع الطرق والرصف والصيانة والإنارة.</p>
+      </div>
+
+      <div class="notice-box" data-aos="fade-up">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="shrink-0">
+          <path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4Z" stroke="#c9a227" stroke-width="1.7" />
+          <path d="m9 12 2 2 4-4" stroke="#c9a227" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <p><strong>شركة موثّقة ومعتمدة</strong> لدى الجهات الحكومية والقطاع الخاص، ومسجلة كمورّد ومقاول معتمد لتنفيذ
+          مشاريع البنية التحتية.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+        <div class="client-card" data-aos="fade-up">أمانة منطقة الحدود الشمالية</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="40">أمانة محافظة حفر الباطن</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="80">بلدية الشعبة</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="120">بلدية روضة هباس</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="160">بلدية عرعر</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="200">بلدية طلعة التميار</div>
+        <div class="client-card" data-aos="fade-up">بلدية الغاط</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="40">بلدية قبة</div>
+        <div class="client-card" data-aos="fade-up" data-aos-delay="80">حرس الحدود</div>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto text-center" data-aos="fade-up">
+        <div class="mini-stat"><strong data-count="100" data-suffix="%">0</strong><span>التزام بالتسليم</span></div>
+        <div class="mini-stat"><strong data-count="76">0</strong><span>عقد ومشروع</span></div>
+        <div class="mini-stat"><strong data-count="11">0</strong><span>جهة متعاقدة</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="road-divider"></div>
+
+  <!-- ===================== ORG STRUCTURE ===================== -->
+  <section id="organization" class="section-pad bg-sand-50">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <p class="eyebrow text-navy-800 mb-3">ORGANIZATIONAL STRUCTURE</p>
+        <h2 class="section-title">الهيكل التنظيمي والوظيفي</h2>
+      </div>
+
+      <div class="notice-box mb-12" data-aos="fade-up">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="shrink-0">
+          <path d="M4 20V10l8-6 8 6v10M9 20v-6h6v6" stroke="#c9a227" stroke-width="1.7" stroke-linejoin="round" />
+        </svg>
+        <p><strong>نطاق العمل الحالي:</strong> أعمال صيانة الطرق والأرصفة والإنارة — حي الشعبة، تحت إشراف أمانة منطقة
+          الحدود الشمالية.</p>
+      </div>
+
+      <!-- org chart -->
+      <div class="org-chart mb-16" data-aos="fade-up">
+        <div class="org-node org-node--head">
+          <strong>رئيس مجلس الإدارة</strong>
+          <span>حامد باتل العنزي — خبرة 30 عاماً</span>
+        </div>
+        <div class="org-branches">
+          <div class="org-branch">
+            <div class="org-node">
+              <strong>مدير المشروعات (مهندس مدني)</strong>
+              <span>م. مايكل زي بقطر خلف — 19 سنة خبرة</span>
+            </div>
+            <div class="org-sub">
+              <div class="org-node org-node--sm"><strong>مهندس الموقع</strong><span>محمد عوض الكامل</span></div>
+              <div class="org-node org-node--sm"><strong>حاسب الكميات</strong><span>أحمد يحي عزمت</span></div>
+              <div class="org-node org-node--sm"><strong>في الجودة</strong><span>تفريد العنزي</span></div>
+              <div class="org-node org-node--sm"><strong>المحاسب</strong><span>عمر طارق العطار</span></div>
+            </div>
+          </div>
+          <div class="org-branch">
+            <div class="org-node">
+              <strong>مدير الموارد البشرية</strong>
+              <span>تركي حامد العنزي — 6 سنوات خبرة</span>
+            </div>
+            <div class="org-sub">
+              <div class="org-node org-node--sm"><strong>كاتب أجور</strong><span>قسم الموارد البشرية</span></div>
+              <div class="org-node org-node--sm"><strong>كاتبة الأجور</strong><span>أماني · غادة العنزي</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="org-field">
+          <div class="org-node org-node--field"><strong>10</strong><span>سائقون ومعدات</span></div>
+          <div class="org-node org-node--field"><strong>8</strong><span>عمالة ميدانية</span></div>
+          <div class="org-node org-node--field"><strong>4</strong><span>مراقبون ميدانيون</span></div>
+          <div class="org-node org-node--field"><strong>4</strong><span>مهن فنية</span></div>
+        </div>
+      </div>
+
+      <!-- workforce charts -->
+      <div class="grid lg:grid-cols-2 gap-10">
+        <div data-aos="fade-up">
+          <h3 class="font-display font-bold text-xl mb-6">التوزيع حسب الجنسية</h3>
+          <div class="space-y-3">
+            <div class="bar-row"><span class="bar-label">باكستاني</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:8"></div>
+              </div><span class="bar-value">8</span>
+            </div>
+            <div class="bar-row"><span class="bar-label">سعودي</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:7"></div>
+              </div><span class="bar-value">7</span>
+            </div>
+            <div class="bar-row"><span class="bar-label">مصري</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:7"></div>
+              </div><span class="bar-value">7</span>
+            </div>
+            <div class="bar-row"><span class="bar-label">هندي</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:6"></div>
+              </div><span class="bar-value">6</span>
+            </div>
+            <div class="bar-row"><span class="bar-label">يمني</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:5"></div>
+              </div><span class="bar-value">5</span>
+            </div>
+            <div class="bar-row"><span class="bar-label">بنغلاديشي</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:2"></div>
+              </div><span class="bar-value">2</span>
+            </div>
+            <div class="bar-row"><span class="bar-label">سوداني</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="--val:1"></div>
+              </div><span class="bar-value">1</span>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100">
+          <h3 class="font-display font-bold text-xl mb-6">ملخص الفئات الوظيفية</h3>
+          <div class="overflow-hidden rounded-xl border border-navy-900/10">
+            <table class="w-full text-sm">
+              <thead class="bg-navy-900 text-white">
+                <tr>
+                  <th class="py-3 px-4 text-right">الفئة الوظيفية</th>
+                  <th class="py-3 px-4">العدد</th>
+                  <th class="py-3 px-4">النسبة</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                <tr class="border-t border-navy-900/10">
+                  <td class="py-3 px-4">السائقون والمعدات</td>
+                  <td class="py-3 px-4 text-center font-mono">10</td>
+                  <td class="py-3 px-4 text-center font-mono text-gold-600 font-bold">27.8%</td>
+                </tr>
+                <tr class="border-t border-navy-900/10">
+                  <td class="py-3 px-4">العمالة الميدانية</td>
+                  <td class="py-3 px-4 text-center font-mono">8</td>
+                  <td class="py-3 px-4 text-center font-mono text-gold-600 font-bold">22.2%</td>
+                </tr>
+                <tr class="border-t border-navy-900/10">
+                  <td class="py-3 px-4">المهن الفنية والمراقبون</td>
+                  <td class="py-3 px-4 text-center font-mono">8</td>
+                  <td class="py-3 px-4 text-center font-mono text-gold-600 font-bold">22.2%</td>
+                </tr>
+                <tr class="border-t border-navy-900/10">
+                  <td class="py-3 px-4">الإداريون</td>
+                  <td class="py-3 px-4 text-center font-mono">6</td>
+                  <td class="py-3 px-4 text-center font-mono text-gold-600 font-bold">16.7%</td>
+                </tr>
+                <tr class="border-t border-navy-900/10">
+                  <td class="py-3 px-4">الجودة والمحاسبة</td>
+                  <td class="py-3 px-4 text-center font-mono">4</td>
+                  <td class="py-3 px-4 text-center font-mono text-gold-600 font-bold">11.1%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="grid grid-cols-3 gap-3 mt-5">
+            <div class="mini-stat mini-stat--sm"><strong data-count="36">0</strong><span>إجمالي الكادر</span></div>
+            <div class="mini-stat mini-stat--sm"><strong data-count="7">0</strong><span>فئات وظيفية</span></div>
+            <div class="mini-stat mini-stat--sm"><strong data-count="7">0</strong><span>جنسيات عاملة</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FLEET / EQUIPMENT ===================== -->
+  <section id="fleet" class="section-pad bg-navy-950 relative overflow-hidden">
+    <div class="absolute inset-0 asphalt-noise opacity-20"></div>
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <p class="eyebrow text-gold-400 mb-3">EQUIPMENT &amp; FLEET</p>
+        <h2 class="section-title text-white">المعدات وأسطول التنفيذ</h2>
+        <p class="text-white/60 mt-4">محطة أسفلت خاصة وأسطول متكامل من المعدات الثقيلة يغطي مختلف مراحل التنفيذ الميداني
+          — من الحفر والتسوية حتى الفرش والدك والنقل.</p>
+        <div class="flex justify-center gap-8 mt-8 font-mono text-gold-400">
+          <div class="text-center">
+            <div class="text-2xl font-bold">MARINI</div>
+            <div class="text-white/50 text-xs">طراز الخلاطة</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">120 t/h</div>
+            <div class="text-white/50 text-xs">طاقة المحطة</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold">+4</div>
+            <div class="text-white/50 text-xs">فئات معدات</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Asphalt plant feature -->
+      <div class="grid md:grid-cols-2 gap-6 items-center mb-8" data-aos="fade-up">
+        <div class="fleet-photo"><img src="assets/images/plant-side.jpg" alt="محطة إنتاج الأسفلت ماريني"></div>
+        <div class="fleet-copy">
+          <p class="eyebrow text-gold-400 mb-2">ASPHALT PLANT</p>
+          <h3 class="text-2xl font-display font-bold text-white mb-3">محطة إنتاج الأسفلت</h3>
+          <p class="text-white/65 leading-relaxed mb-4">تمتلك الشركة خلاطة أسفلت طراز <strong
+              class="text-gold-400">ماريني (MARINI)</strong>، تعمل بطاقة إنتاجية تصل إلى 120 طن في الساعة، وتقع في
+            محافظة رفحاء — تُستخدم لإنتاج الخلطات الإسفلتية الساخنة اللازمة لمشاريع الطرق والرصف التابعة للشركة.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag-chip">خلاطة إسفلت ساخنة</span>
+            <span class="tag-chip">120 طن / ساعة</span>
+            <span class="tag-chip">محافظة رفحاء</span>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden mb-16" data-aos="fade-up">
+        <img src="assets/images/plant-full.jpg" alt="منظومة محطة الأسفلت الكاملة"
+          class="w-full h-56 md:h-72 object-cover">
+      </div>
+
+      <!-- equipment grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="equip-card" data-aos="fade-up">
+          <img src="assets/images/milling.jpg" alt="آلة كشط الأسفلت Wirtgen">
+          <div class="equip-body">
+            <h4>آلة كشط الأسفلت القديم</h4>
+            <p>WIRTGEN COLD MILLING</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up" data-aos-delay="60">
+          <img src="assets/images/paving-2.jpg" alt="فرّادة أسفلت Vögele">
+          <div class="equip-body">
+            <h4>فرّادة أسفلت</h4>
+            <p>VÖGELE SUPER 1900-3</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up" data-aos-delay="120">
+          <img src="assets/images/steel-roller.jpg" alt="رصاصة حديدية مزدوجة">
+          <div class="equip-body">
+            <h4>رصاصات حديدية ومطاطية</h4>
+            <p>HAMM / BOMAG ROLLERS</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up" data-aos-delay="180">
+          <img src="assets/images/excavator.jpg" alt="حفارة هيدروليكية">
+          <div class="equip-body">
+            <h4>بوكلينات (حفارات)</h4>
+            <p>HYUNDAI / DOOSAN 220LC</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up">
+          <img src="assets/images/grader.jpg" alt="جريدر تسوية">
+          <div class="equip-body">
+            <h4>الجريدر (المسوّية)</h4>
+            <p>MOTOR GRADER</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up" data-aos-delay="60">
+          <img src="assets/images/jcb.jpg" alt="لودر JCB">
+          <div class="equip-body">
+            <h4>لودر خلفي JCB</h4>
+            <p>JCB BACKHOE LOADER</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up" data-aos-delay="120">
+          <img src="assets/images/trailer.jpg" alt="تريلا قلاب">
+          <div class="equip-body">
+            <h4>التريلات ومقطورات النقل</h4>
+            <p>TIPPER TRAILER</p>
+          </div>
+        </div>
+        <div class="equip-card" data-aos="fade-up" data-aos-delay="180">
+          <img src="assets/images/tack.jpg" alt="أعمال الطبقة اللاصقة">
+          <div class="equip-body">
+            <h4>موزّع بيتومين (رش اللاصقة)</h4>
+            <p>TACK &amp; PRIME COAT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="road-divider road-divider--light"></div>
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery" class="section-pad bg-sand-50">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-10" data-aos="fade-up">
+        <p class="eyebrow text-navy-800 mb-3">COMPANY PORTFOLIO</p>
+        <h2 class="section-title">سابقة أعمال الشركة</h2>
+        <p class="section-lead mt-4">توثيق مصوّر لمشاريع الشركة على أرض الواقع — من الأعمال الترابية والسفلتة إلى
+          الدهانات والإنارة والبردورة والانترلوك.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-2 mb-10" id="galleryFilters" data-aos="fade-up">
+        <button class="filter-btn is-active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="earth">الأعمال الترابية</button>
+        <button class="filter-btn" data-filter="asphalt">أعمال السفلتة</button>
+        <button class="filter-btn" data-filter="paint">الدهانات والتخطيط</button>
+        <button class="filter-btn" data-filter="light">أعمدة الإنارة</button>
+        <button class="filter-btn" data-filter="curb">البردورة والانترلوك</button>
+        <button class="filter-btn" data-filter="other">أعمال أخرى</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- injected by script.js -->
+      </div>
+    </div>
+    <!-- lightbox -->
+    <div id="lightbox" class="lightbox">
+      <button id="lightboxClose" class="lightbox-close" aria-label="إغلاق">&times;</button>
+      <img id="lightboxImg" src="" alt="">
+    </div>
+  </section
+  <!-- ===================== QUALITY & SAFETY ===================== -->
+  <section id="quality" class="section-pad bg-white">
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <p class="eyebrow text-navy-800 mb-3">HEALTH · SAFETY · QUALITY</p>
+        <h2 class="section-title">السلامة والجودة</h2>
+        <p class="section-lead mt-4">تلتزم الشركة بأعلى معايير السلامة المهنية والصحة في مواقع العمل، وبضبط الجودة في كل
+          مراحل التنفيذ، لضمان بيئة عمل آمنة ومخرجات مطابقة للمواصفات.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="quality-card" data-aos="fade-up">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="m5 13 4 4L19 7" stroke="#c9a227" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <h4>ضبط جودة الخلطات</h4>
+          <p>فحص الخلطات الإسفلتية وطبقات الرصف قبل وأثناء التنفيذ.</p>
+        </div>
+        <div class="quality-card" data-aos="fade-up" data-aos-delay="60">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4Z" stroke="#c9a227" stroke-width="1.8" />
+          </svg>
+          <h4>السلامة المهنية</h4>
+          <p>تطبيق اشتراطات السلامة في المواقع واستخدام معدات الوقاية.</p>
+        </div>
+        <div class="quality-card" data-aos="fade-up" data-aos-delay="120">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="8" r="3.4" stroke="#c9a227" stroke-width="1.8" />
+            <path d="M5 21c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5" stroke="#c9a227" stroke-width="1.8"
+              stroke-linecap="round" />
+          </svg>
+          <h4>تأهيل وتدريب الكوادر</h4>
+          <p>رفع كفاءة العاملين على المعدات وإجراءات السلامة باستمرار.</p>
+        </div>
+        <div class="quality-card" data-aos="fade-up" data-aos-delay="180">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12Z" stroke="#c9a227"
+              stroke-width="1.7" />
+            <circle cx="12" cy="12" r="2.8" stroke="#c9a227" stroke-width="1.7" />
+          </svg>
+          <h4>الإشراف الميداني المستمر</h4>
+          <p>متابعة مهندسي ومراقبي المواقع لكل مراحل العمل أولاً بأول.</p>
+        </div>
+      </div>
+
+      <div class="quote-banner mt-12" data-aos="fade-up">
+        <p class="text-lg md:text-xl font-display font-bold">الجودة والسلامة والالتزام بالمواعيد — أساس ثقة عملائنا</p>
+        <p class="text-white/60 mt-2 text-sm">نلتزم بتسليم مشاريع مطابقة للمواصفات الفنية المعتمدة ووفق أعلى معايير
+          الأمان.</p>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="relative bg-navy-950 pt-24 pb-10 overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-72 h-72 rounded-full bg-navy-800/40 blur-3xl"></div>
+    <div class="absolute -bottom-32 -right-24 w-96 h-96 rounded-full bg-gold-500/10 blur-3xl"></div>
+
+    <div class="max-w-[1400px] mx-auto px-5 md:px-10 relative text-center">
+      <span class="logo-badge mx-auto mb-6 !w-14 !h-14">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none">
+          <path d="M12 3v14M12 3l6 6M12 3 6 9" stroke="#0e2238" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </span>
+      <p class="eyebrow text-gold-400 mb-3">CONTACT US</p>
+      <h2 class="section-title text-white">تواصل معنا</h2>
+      <p class="text-white/60 mt-3 mb-12">للاستفسار عن خدماتنا وتنفيذ مشاريعكم</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-4xl mx-auto text-right">
+        <a href="mailto:F-hamed1433@hotmail.com" class="contact-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M3 6h18v12H3V6Zm0 0 9 7 9-7" stroke="#c9a227" stroke-width="1.7" stroke-linejoin="round" />
+          </svg>
+          <div><span>البريد الإلكتروني</span><strong dir="ltr">F-hamed1433@hotmail.com</strong></div>
+        </a>
+        <a href="tel:0591233334" class="contact-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C10.5 21 3 13.5 3 6a2 2 0 0 1 2-2Z"
+              stroke="#c9a227" stroke-width="1.7" stroke-linejoin="round" />
+          </svg>
+          <div><span>الجوال</span><strong dir="ltr">0591233334</strong></div>
+        </a>
+        <div class="contact-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="4" width="16" height="16" rx="1.5" stroke="#c9a227" stroke-width="1.7" />
+            <path d="M8 8h8M8 12h8M8 16h5" stroke="#c9a227" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+          <div><span>السجل التجاري</span><strong class="font-mono">3453003284</strong></div>
+        </div>
+        <div class="contact-card">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="#c9a227" stroke-width="1.7" />
+            <circle cx="12" cy="9" r="2.3" stroke="#c9a227" stroke-width="1.7" />
+          </svg>
+          <div><span>الموقع</span><strong>رفحاء — الحدود الشمالية</strong></div>
+        </div>
+      </div>
+      <div
+        class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-white/50 text-sm">
+        <p>شركة الإنشاء والتميز للمقاولات العامة — AL-INSHAA &amp; AL-TAMYOZ GENERAL CONTRACTING CO. — KSA</p>
+        <p class="font-mono text-xs">© <span id="year"></span> جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
