@@ -768,7 +768,6 @@
             }
         }
     </style>
-    <base target="_blank">
 </head>
 <body>
 
@@ -1240,46 +1239,382 @@
         </div>
     </section>
 
-    <!-- ═══ PROJECTS (مع جدول أبرز المشاريع) ═══ -->
-    <section id="projects" class="py-24 lg:py-32 dark-section-alt">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ═══ PROJECTS (كاروسيل سينمائي 3D — 3 سلايدات × 4 مشاريع) ═══ -->
+    <section id="projects" class="py-24 lg:py-32 dark-section-alt overflow-hidden relative">
+        <!-- خلفية زخرفية -->
+        <div class="absolute inset-0 pointer-events-none opacity-40" aria-hidden="true">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="section-badge">المشاريع</span>
                 <h2 class="section-title mt-3">مشاريعنا على أرض الواقع</h2>
-                <p class="section-subtitle">سجل أعمال ومحفظة المشاريع المنفذة</p>
+                <p class="section-subtitle">محفظة من المشاريع المنفذة بجودة عالية — تنقّل بين السلايدات واضغط أي مشروع لرؤية تفاصيله الكاملة</p>
                 <div class="section-divider"></div>
             </div>
 
-            <!-- معرض الصور -->
-            <div id="projects-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 mb-12"></div>
+            <!-- الكاروسيل السينمائي -->
+            <div class="cinema-carousel" id="cinema-carousel" data-aos="fade-up" data-aos-delay="100">
+                <div class="cinema-viewport">
+                    <div class="cinema-track" id="cinema-track">
+                        <!-- السلايدات تُولَّد ديناميكياً من js/projects-data.js -->
+                    </div>
+                </div>
 
-            <!-- جدول أبرز المشاريع -->
-            <div class="overflow-x-auto shadow-card rounded-xl border border-brand-500/6" data-aos="fade-up">
-                <table class="project-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>تفاصيل المشروع</th>
-                            <th>الجهة المتعاقدة</th>
-                            <th>القيمة (ر.س)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>01</td><td>صيانة الشوارع والأرصفة والإثارة بمركز الشعبة</td><td>بلدية الشعبة</td><td>4,066,667</td></tr>
-                        <tr><td>02</td><td>توريد دهانات وبرودرات ومستلزمات</td><td>أمانة محافظة حفر الباطن</td><td>4,061,142</td></tr>
-                        <tr><td>03</td><td>درء أخطار السيوط وتصريف مياه الأمطار – المرحلة الأولى بشعبة نصاب</td><td>بلدية الشعبة</td><td>2,100,000</td></tr>
-                        <tr><td>04</td><td>تأهيل الشوارع والطرق والإثارة بطاعة التماط والقرى التابعة</td><td>بلدية طاعة التماط</td><td>2,099,992</td></tr>
-                        <tr><td>05</td><td>حدائق وممرات مشاة وساحات بشعبة نصاب</td><td>بلدية الشعبة</td><td>1,685,974</td></tr>
-                        <tr><td>06</td><td>درء أخطار السيوط وتصريف مياه الأمطار – المرحلة الرابعة بشعبة نصاب</td><td>بلدية الشعبة</td><td>1,510,350</td></tr>
-                        <tr><td>07</td><td>درء أخطار السيوط وتصريف مياه الأمطار بشعبة نصاب</td><td>بلدية الشعبة</td><td>1,301,000</td></tr>
-                        <tr><td>08</td><td>صيانة وإعادة تأهيل الشوارع الداخلية للمخططات السكنية</td><td>بلدية الشعبة</td><td>998,525</td></tr>
-                        <tr><td>09</td><td>صيانة وتأهيل الشوارع بقربة العجرمية</td><td>بلدية طاعة التماط</td><td>799,998</td></tr>
-                        <tr><td>10</td><td>إنارة للأمانة والبلديات والقرى التابعة لها بشعبة نصاب</td><td>بلدية الشعبة</td><td>779,000</td></tr>
-                    </tbody>
-                </table>
+                <!-- شريط التحكم السفلي -->
+                <div class="cinema-controls">
+                    <button class="cinema-arrow cinema-arrow--prev" id="cinema-prev" aria-label="السلايد السابق">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <div class="cinema-center">
+                        <!-- مؤشرات السلايدات -->
+                        <div class="cinema-dots" id="cinema-dots"></div>
+                        <!-- شريط تقدّم الـ autoplay -->
+                        <div class="cinema-progress" id="cinema-progress"><div class="cinema-progress__bar" id="cinema-progress-bar"></div></div>
+                        <!-- عدّاد السلايدات -->
+                        <div class="cinema-counter">
+                            <span class="cinema-counter__current" id="cinema-current">01</span>
+                            <span class="cinema-counter__sep">/</span>
+                            <span class="cinema-counter__total" id="cinema-total">03</span>
+                        </div>
+                    </div>
+
+                    <button class="cinema-arrow cinema-arrow--next" id="cinema-next" aria-label="السلايد التالي">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- زر CTA -->
+            <div class="text-center mt-14" data-aos="fade-up" data-aos-delay="200">
+                <a href="#contact" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-gradient text-white rounded-xl shadow-premium hover:shadow-premium-lg hover:-translate-y-0.5 transition-all duration-300 font-bold">
+                    <i class="fas fa-handshake"></i>
+                    اطلب عرضاً لمشروعك القادم
+                </a>
             </div>
         </div>
     </section>
+
+    <!-- أنماط الكاروسيل السينمائي -->
+    <style>
+        /* — الحاوية — */
+        .cinema-carousel { position: relative; }
+
+        /* — منفذ العرض (perspective عميق للإحساس 3D) — */
+        .cinema-viewport {
+            overflow: hidden;
+            padding: 40px 20px 50px;
+            perspective: 1800px;
+            perspective-origin: center center;
+        }
+        .cinema-track {
+            display: flex;
+            transition: transform 900ms cubic-bezier(0.34, 1.4, 0.64, 1);
+            will-change: transform;
+            transform-style: preserve-3d;
+        }
+        .cinema-track.is-dragging { transition: none; }
+
+        /* — سلايد واحد — */
+        .cinema-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 0.5rem;
+            transform-style: preserve-3d;
+        }
+        @media (min-width: 768px) { .cinema-slide { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; } }
+        @media (min-width: 1024px) { .cinema-slide { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+
+        /* — البطاقة السينمائية — */
+        .cinema-card {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px -8px rgba(10,74,122,0.12);
+            transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 600ms ease;
+            transform-style: preserve-3d;
+            border: 1px solid rgba(10,74,122,0.06);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            will-change: transform;
+        }
+        .cinema-card:hover {
+            transform: translateY(-14px) rotateX(6deg) rotateY(-3deg) scale(1.02);
+            box-shadow: 0 40px 70px -15px rgba(10,74,122,0.30),
+                        0 0 0 1px rgba(214,163,71,0.35),
+                        0 0 60px -10px rgba(214,163,71,0.15);
+            z-index: 10;
+        }
+        .cinema-card:active { transform: translateY(-6px) scale(1.01); }
+
+        /* — الصورة مع طبقة تدرّج وحركة zoom — */
+        .cinema-card__media {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: linear-gradient(135deg, #dce6f0, #c1d3e6);
+        }
+        .cinema-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1000ms cubic-bezier(0.22,1,0.36,1), filter 600ms ease;
+        }
+        .cinema-card:hover .cinema-card__media img {
+            transform: scale(1.12);
+            filter: saturate(1.15) brightness(1.02);
+        }
+        .cinema-card__media::after {
+            content: "";
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(2,10,20,0.55) 75%, rgba(2,10,20,0.85) 100%),
+                linear-gradient(135deg, rgba(10,74,122,0.10) 0%, transparent 60%);
+            transition: opacity 500ms ease;
+        }
+        .cinema-card:hover .cinema-card__media::after { opacity: 1.05; }
+
+        /* — رقم المشروع الكبير (لمسة مجلة) — */
+        .cinema-card__num {
+            position: absolute;
+            top: 12px;
+            inset-inline-end: 14px;
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.18);
+            font-family: 'Cairo', sans-serif;
+            line-height: 1;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* — شارة النوع — */
+        .cinema-card__badge {
+            position: absolute;
+            top: 14px;
+            inset-inline-start: 14px;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(8px);
+            color: #0a4a7a;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 14px -4px rgba(0,0,0,0.20);
+            z-index: 3;
+        }
+        .cinema-card__badge i { color: #D6A347; font-size: 0.8rem; }
+
+        /* — التراكب السفلي للصورة (الجهة + العنوان) — */
+        .cinema-card__overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 16px 18px 18px;
+            color: #fff;
+            z-index: 2;
+        }
+        .cinema-card__client {
+            font-size: 0.72rem;
+            opacity: 0.92;
+            margin-bottom: 4px;
+            font-weight: 500;
+            display: flex; align-items: center; gap: 6px;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+        }
+        .cinema-card__client i { color: #D6A347; }
+        .cinema-card__title {
+            font-size: 1.08rem;
+            font-weight: 800;
+            line-height: 1.4;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* — جسم البطاقة — */
+        .cinema-card__body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+        }
+        .cinema-card__summary {
+            font-size: 0.83rem;
+            color: #4a6a8a;
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* — صف الميتا: القيمة + سنة — */
+        .cinema-card__meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .cinema-card__value { display: flex; flex-direction: column; }
+        .cinema-card__value-label {
+            font-size: 0.68rem;
+            color: #8aa0c0;
+            font-weight: 500;
+        }
+        .cinema-card__value-num {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #0a4a7a;
+            line-height: 1;
+            font-family: 'Cairo', sans-serif;
+        }
+        .cinema-card__value-num span {
+            color: #D6A347;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-inline-end: 4px;
+        }
+        .cinema-card__year {
+            font-size: 0.78rem;
+            color: #8aa0c0;
+            font-weight: 600;
+            padding: 4px 10px;
+            background: rgba(10,74,122,0.06);
+            border-radius: 8px;
+        }
+
+        /* — زر CTA في البطاقة — */
+        .cinema-card__cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #0a4a7a, #062a46);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 400ms ease;
+            margin-top: auto;
+        }
+        .cinema-card__cta i { transition: transform 400ms ease; }
+        .cinema-card:hover .cinema-card__cta {
+            background: linear-gradient(135deg, #D6A347, #b0812e);
+        }
+        .cinema-card:hover .cinema-card__cta i {
+            transform: translateX(-4px);
+        }
+
+        /* — التحكم — */
+        .cinema-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-top: 36px;
+            padding: 0 8px;
+        }
+        .cinema-arrow {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: #fff;
+            color: #0a4a7a;
+            border: 1px solid rgba(10,74,122,0.12);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px -6px rgba(10,74,122,0.20);
+            transition: all 350ms cubic-bezier(0.22,1,0.36,1);
+            flex-shrink: 0;
+        }
+        .cinema-arrow:hover {
+            background: linear-gradient(135deg, #0a4a7a, #062a46);
+            color: #fff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 14px 30px -6px rgba(10,74,122,0.40);
+        }
+        .cinema-arrow:active { transform: translateY(-1px) scale(1); }
+        .cinema-arrow:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none;
+            background: #fff;
+            color: #0a4a7a;
+        }
+
+        .cinema-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            max-width: 400px;
+        }
+        .cinema-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cinema-dot {
+            width: 10px; height: 10px;
+            border-radius: 999px;
+            background: rgba(10,74,122,0.20);
+            border: none; cursor: pointer; padding: 0;
+            transition: all 400ms cubic-bezier(0.22,1,0.36,1);
+        }
+        .cinema-dot.is-active {
+            width: 36px;
+            background: linear-gradient(135deg, #D6A347, #b0812e);
+        }
+        .cinema-progress {
+            width: 100%;
+            height: 3px;
+            background: rgba(10,74,122,0.10);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .cinema-progress__bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #D6A347, #c4923a);
+            border-radius: 999px;
+            transition: width 80ms linear;
+        }
+        .cinema-counter {
+            font-size: 0.85rem;
+            color: #4a6a8a;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Cairo', sans-serif;
+        }
+        .cinema-counter__current { color: #0a4a7a; font-size: 1rem; }
+        .cinema-counter__sep { color: rgba(10,74,122,0.30); margin: 0 8px; }
+
+        @media (max-width: 640px) {
+            .cinema-controls { gap: 12px; }
+            .cinema-arrow { width: 48px; height: 48px; font-size: 1rem; }
+            .cinema-card__num { font-size: 2.4rem; }
+            .cinema-card__title { font-size: 1rem; }
+        }
+    </style>
 
     <!-- ═══ SERVICES (موسع) ═══ -->
     <section id="services" class="py-24 lg:py-32 dark-section">
@@ -1354,97 +1689,188 @@
         </div>
     </section>
 
-    <!-- ═══ EQUIPMENT (المعدات) ═══ -->
-    <section id="equipment" class="py-24 lg:py-32 dark-section-alt">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ═══ EQUIPMENT (الأسطول — كل معدة بصورتها) ═══ -->
+    <section id="equipment" class="py-24 lg:py-32 dark-section-alt overflow-hidden relative">
+        <!-- خلفية زخرفية -->
+        <div class="absolute inset-0 pointer-events-none opacity-40" aria-hidden="true">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="text-center mb-16" data-aos="fade-up">
                 <span class="section-badge">المعدات</span>
                 <h2 class="section-title mt-3">أسطولنا المتكامل</h2>
-                <p class="section-subtitle">معدات حديثة ومحطة أسفلت خاصة تضمن جودة التنفيذ</p>
+                <p class="section-subtitle">معدات حديثة ومحطة أسفلت خاصة — استعرض كل معدة بصورتها ومواصفاتها</p>
                 <div class="section-divider"></div>
             </div>
 
-            <!-- محطة الأسفلت -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-brand-500/6 shadow-card mb-12" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row items-center gap-6">
-                    <div class="w-full md:w-1/3">
-                        <div class="rounded-xl overflow-hidden shadow-premium">
-                            <img src="images/asphalt-plant.jpg" alt="محطة أسفلت" class="w-full h-48 object-cover" onerror="this.style.display='none'">
-                            <div class="bg-brand-500/10 p-4 text-center">
-                                <span class="block text-2xl font-extrabold text-brand-700">MARINI 120</span>
-                                <span class="text-sm text-brand-600/60">خلاطة أسفلت · 120 طن/ساعة</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full md:w-2/3">
-                        <h3 class="text-xl font-bold text-brand-700 mb-2">محطة إنتاج الأسفلت</h3>
-                        <p class="text-brand-600/70 text-sm leading-relaxed">
-                            تمتلك شركة الإنشاء والتميز خلاطة أسفلت طراز MARINI 120، تعمل بطاقة إنتاجية تصل إلى 120 طن/ساعة، وتقع في محافظة رفحاء. تُستخدم المحطة في إنتاج الخلطات الإسفلتية الساخنة اللازمة لمشروعات الطرق والرصف التابعة للشركة، بما يمنحها تحكماً كاملاً في الجودة والكميات ومواعيد التوريد.
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-4">
-                            <span class="px-3 py-1 bg-brand-50 rounded-full text-brand-700 text-xs font-semibold">خلطة ساخنة</span>
-                            <span class="px-3 py-1 bg-brand-50 rounded-full text-brand-700 text-xs font-semibold">إنتاج ذاتي</span>
-                            <span class="px-3 py-1 bg-brand-50 rounded-full text-brand-700 text-xs font-semibold">تحكم كامل بالجودة</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- فلاتر الفئات -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-12" id="equipment-filters" data-aos="fade-up">
+                <!-- تُبنى ديناميكياً -->
             </div>
 
-            <!-- قائمة المعدات -->
-            <div class="equipment-grid">
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="0">
-                    <i class="fas fa-tractor"></i>
-                    <h4>فردة أسفلت</h4>
-                    <p>VÖGELE SUPER 1900-3</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="50">
-                    <i class="fas fa-roller"></i>
-                    <h4>رصاصة حديدية</h4>
-                    <p>Hamm Tandem / Single Drum</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-truck"></i>
-                    <h4>رصاصة إطارات</h4>
-                    <p>BOMAG Pneumatic Roller</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="150">
-                    <i class="fas fa-excavator"></i>
-                    <h4>حفارات هيدروليكية</h4>
-                    <p>Hyundai 220LC / Doosan</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-dumpster"></i>
-                    <h4>شاحنات نقل</h4>
-                    <p>قلابات ومقطورات</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="250">
-                    <i class="fas fa-road"></i>
-                    <h4>آلة كشط</h4>
-                    <p>Wirtgen Asphalt Milling</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-water"></i>
-                    <h4>صريح مياه</h4>
-                    <p>Water Tanker</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="350">
-                    <i class="fas fa-grader"></i>
-                    <h4>جريدر</h4>
-                    <p>Motor Grader</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-forklift"></i>
-                    <h4>رافعات</h4>
-                    <p>JCB Backhoe / Forklift</p>
-                </div>
-                <div class="equipment-item" data-aos="fade-up" data-aos-delay="450">
-                    <i class="fas fa-tools"></i>
-                    <h4>معدات دهان</h4>
-                    <p>Thermoplastic Marking</p>
-                </div>
+            <!-- شبكة المعدات -->
+            <div id="equipment-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- تُبنى ديناميكياً -->
+            </div>
+
+            <!-- عدّاد المعدات -->
+            <div class="text-center mt-12 text-brand-500/70 text-sm font-medium" data-aos="fade-up">
+                <span id="equipment-count">0</span> معدة في الأسطول · <span id="equipment-categories">0</span> فئات متخصصة
             </div>
         </div>
     </section>
+
+    <!-- أنماط قسم المعدات -->
+    <style>
+        /* — فلاتر الفئات — */
+        .equip-filter {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #fff;
+            color: #0a4a7a;
+            padding: 9px 18px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid rgba(10,74,122,0.12);
+            cursor: pointer;
+            transition: all 300ms ease;
+            box-shadow: 0 4px 14px -4px rgba(10,74,122,0.10);
+        }
+        .equip-filter:hover {
+            border-color: #D6A347;
+            transform: translateY(-2px);
+        }
+        .equip-filter.is-active {
+            background: linear-gradient(135deg, #0a4a7a, #062a46);
+            color: #fff;
+            border-color: #0a4a7a;
+            box-shadow: 0 8px 22px -6px rgba(10,74,122,0.40);
+        }
+        .equip-filter i { font-size: 0.85rem; }
+
+        /* — بطاقة المعدة — */
+        .equip-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px -8px rgba(10,74,122,0.12);
+            border: 1px solid rgba(10,74,122,0.06);
+            transition: transform 500ms cubic-bezier(0.22,1,0.36,1), box-shadow 500ms ease;
+            transform-style: preserve-3d;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .equip-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .equip-card:hover {
+            transform: translateY(-10px) rotateX(3deg) rotateY(-2deg) scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(10,74,122,0.30),
+                        0 0 0 1px rgba(214,163,71,0.30);
+            z-index: 5;
+        }
+        .equip-card__media {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: linear-gradient(135deg, #dce6f0, #c1d3e6);
+        }
+        .equip-card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 800ms cubic-bezier(0.22,1,0.36,1), filter 500ms ease;
+        }
+        .equip-card:hover .equip-card__media img {
+            transform: scale(1.10);
+            filter: saturate(1.1);
+        }
+        .equip-card__media::after {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(2,10,20,0.55) 100%);
+        }
+        .equip-card__cat-badge {
+            position: absolute;
+            top: 12px;
+            inset-inline-start: 12px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(6px);
+            color: #0a4a7a;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 14px -4px rgba(0,0,0,0.20);
+            z-index: 2;
+        }
+        .equip-card__cat-badge i { color: #D6A347; }
+        .equip-card__body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+        .equip-card__name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #0a4a7a;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .equip-card__model {
+            font-size: 0.82rem;
+            color: #D6A347;
+            font-weight: 700;
+            margin-top: -4px;
+        }
+        .equip-card__desc {
+            font-size: 0.82rem;
+            color: #4a6a8a;
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .equip-card__specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(10,74,122,0.12);
+        }
+        .equip-card__spec {
+            font-size: 0.72rem;
+            background: rgba(10,74,122,0.06);
+            color: #0a4a7a;
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .equip-card__spec.is-gold {
+            background: rgba(214,163,71,0.15);
+            color: #b0812e;
+        }
+
+        @media (max-width: 640px) {
+            .equip-card:hover {
+                transform: translateY(-6px) scale(1.01);
+            }
+            .equip-card__name { font-size: 0.98rem; }
+        }
+    </style>
 
     <!-- ═══ CLIENTS (العملاء) ═══ -->
     <section class="py-24 lg:py-32 dark-section">
@@ -1798,6 +2224,10 @@
     <!-- ═══ SCRIPTS ═══ -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js">
     </script>
+    <!-- بيانات المشاريع (مصفوفة PROJECTS) — منفصلة عن منطق العرض -->
+    <script src="js/projects-data.js"></script>
+    <!-- بيانات المعدات (مصفوفة EQUIPMENT_CATEGORIES) — منفصلة عن منطق العرض -->
+    <script src="js/equipment-data.js"></script>
     <script>
         (function updateDate() {
             const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
@@ -1809,10 +2239,8 @@
             if (el) el.textContent = `${day} ${h}:${m}`;
         })();
 
-        const projects = [
-            '20.jpg', '2.jpg', '3.jpg', '4.jpg', '5.webp', '6.jpg', '7.jpg', '8.jpg', '9.jpg',
-            '13.jpg', '15.jpg', '22.jpg', '16.jpg', '17.jpg', '19.jpg', '21.jpg'
-        ].map(f => ({ img: `./images/projact/${f}` }));
+        // بيانات المشاريع تُحمَّل الآن من js/projects-data.js (مصفوفة PROJECTS)
+        // بدلاً من قائمة الصور الثابتة هذه — لتنظيم الكود وفصل البيانات عن العرض.
 
         const testimonials = [
             { name: 'نادر وضاح', role: 'مطور', text: 'كانت تجربتي مع الفريق رائعة. لقد ساعدوني في تنفيذ مشروعي بسرعة واحترافية عالية.' },
@@ -1852,11 +2280,7 @@
             if (el) el.innerHTML = items.map(renderFn).join('');
         }
 
-        renderGrid('projects-grid', projects, (p, i) => `
-                <div class="img-zoom shadow-card hover:shadow-card-hover transition-all duration-500" data-aos="fade-up" data-aos-delay="${i*40}">
-                    <img src="${p.img}" alt="مشروع" loading="lazy" class="h-56 w-full object-cover">
-                </div>
-            `);
+        // (تم نقل توليد شبكة المشاريع إلى كاروسيل 3D في الأعلى — انظر initProjectsCarousel)
 
         renderGrid('testimonials-grid', testimonials, (t, i) => `
                 <div class="testimonial-card p-6 group" data-aos="fade-up" data-aos-delay="${i*80}">
@@ -1895,6 +2319,322 @@
                     ${c.lines.map(l => `<p class="text-brand-600/50 text-sm">${l}</p>`).join('')}
                 </div>
             `);
+        /* ════════════════════════════════════════════════════════════════
+           كاروسيل المشاريع السينمائي
+           - 3 سلايدات × 4 مشاريع (12 مشروعاً)
+           - انتقالات 3D مع parallax خفيف
+           - autoplay مع شريط تقدّم
+           - دعم لوحة المفاتيح والسحب باللمس
+           ════════════════════════════════════════════════════════════════ */
+        (function initCinemaCarousel() {
+            // عدد المشاريع في كل سلايد يتغيّر ديناميكياً حسب عرض الشاشة:
+            // - جوال (<768px)  : 1 مشروع لكل سلايد (تجربة مثالية)
+            // - تابلت (768-1023): 2 مشاريع لكل سلايد
+            // - ديسكتوب (≥1024): 4 مشاريع لكل سلايد
+            function getPerSlide() {
+                const w = window.innerWidth;
+                if (w >= 1024) return 4;
+                if (w >= 768)  return 2;
+                return 1;
+            }
+            const list = (typeof PROJECTS !== 'undefined') ? PROJECTS : [];
+            const total = list.length;
+            const track = document.getElementById('cinema-track');
+            const dotsWrap = document.getElementById('cinema-dots');
+            const currentLabel = document.getElementById('cinema-current');
+            const totalLabel = document.getElementById('cinema-total');
+            const prevBtn = document.getElementById('cinema-prev');
+            const nextBtn = document.getElementById('cinema-next');
+            const progressBar = document.getElementById('cinema-progress-bar');
+            const carousel = document.getElementById('cinema-carousel');
+            if (!track || !list.length) return;
+
+            // ─── الحالة (تُهيّأ قبل البناء لتُستخدم في إعادة البناء عند resize) ───
+            let PER_SLIDE = getPerSlide();
+            let slideCount = Math.max(1, Math.ceil(total / PER_SLIDE));
+            let current = 0;
+            let autoTimer = null;
+            let progressTimer = null;
+            const AUTO_INTERVAL = 7000;
+            const PROGRESS_TICK = 60;
+            let progressValue = 0;
+
+            // ─── بناء السلايدات (دالة قابلة لإعادة الاستخدام عند resize) ───
+            function buildSlides() {
+                let slidesHTML = '';
+                for (let s = 0; s < slideCount; s++) {
+                    const chunk = list.slice(s * PER_SLIDE, (s + 1) * PER_SLIDE);
+                    const cardsHTML = chunk.map(p => {
+                        const numStr = String(p.id).padStart(2, '0');
+                        return `
+                        <a href="project.html?id=${p.id}" class="cinema-card" data-aos="fade-up" data-aos-delay="${(s % PER_SLIDE) * 80}">
+                            <div class="cinema-card__media">
+                                <span class="cinema-card__num">${numStr}</span>
+                                <span class="cinema-card__badge"><i class="fas ${p.typeIcon}"></i> ${p.type}</span>
+                                <img src="${p.cover}" alt="${p.name}" loading="lazy">
+                                <div class="cinema-card__overlay">
+                                    <div class="cinema-card__client"><i class="fas fa-building"></i> ${p.client}</div>
+                                    <h3 class="cinema-card__title">${p.shortName}</h3>
+                                </div>
+                            </div>
+                            <div class="cinema-card__body">
+                                <p class="cinema-card__summary">${p.summary}</p>
+                                <div class="cinema-card__meta-row">
+                                    <div class="cinema-card__value">
+                                        <span class="cinema-card__value-label">قيمة المشروع</span>
+                                        <span class="cinema-card__value-num"><span>ر.س</span>${p.value}</span>
+                                    </div>
+                                    <span class="cinema-card__year">${p.year}</span>
+                                </div>
+                                <div class="cinema-card__cta">
+                                    <span>عرض التفاصيل الكاملة</span>
+                                    <i class="fas fa-arrow-left"></i>
+                                </div>
+                            </div>
+                        </a>`;
+                    }).join('');
+                    slidesHTML += `<div class="cinema-slide">${cardsHTML}</div>`;
+                }
+                track.innerHTML = slidesHTML;
+
+                // بناء المؤشرات
+                let dotsHTML = '';
+                for (let i = 0; i < slideCount; i++) {
+                    dotsHTML += `<button class="cinema-dot${i === 0 ? ' is-active' : ''}" data-slide="${i}" aria-label="السلايد ${i + 1}"></button>`;
+                }
+                dotsWrap.innerHTML = dotsHTML;
+                if (totalLabel) totalLabel.textContent = String(slideCount).padStart(2, '0');
+
+                // أعِد ربط المستمعين للمؤشرات
+                dotsWrap.querySelectorAll('.cinema-dot').forEach(d => {
+                    d.addEventListener('click', () => goTo(parseInt(d.dataset.slide, 10)));
+                });
+
+                // أعِد ربط تأثير parallax للبطاقات الجديدة
+                attachParallax();
+
+                // حافظ على المؤشر الحالي ضمن النطاق
+                if (current >= slideCount) current = slideCount - 1;
+                if (currentLabel) currentLabel.textContent = String(current + 1).padStart(2, '0');
+                updateUI();
+            }
+
+            // ─── parallax خفيف على البطاقات عند تحريك الفأرة ───
+            function attachParallax() {
+                const cards = track.querySelectorAll('.cinema-card');
+                cards.forEach(card => {
+                    if (card._parallaxAttached) return;
+                    card._parallaxAttached = true;
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = (e.clientX - rect.left) / rect.width - 0.5;
+                        const y = (e.clientY - rect.top) / rect.height - 0.5;
+                        card.style.transform = `translateY(-14px) rotateX(${6 + y * 4}deg) rotateY(${-3 - x * 4}deg) scale(1.02)`;
+                    });
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = '';
+                    });
+                });
+            }
+
+            function updateUI() {
+                track.style.transform = `translateX(${current * 100}%)`;
+                dotsWrap.querySelectorAll('.cinema-dot').forEach((d, i) => {
+                    d.classList.toggle('is-active', i === current);
+                });
+                if (currentLabel) currentLabel.textContent = String(current + 1).padStart(2, '0');
+            }
+
+            function resetProgress() {
+                progressValue = 0;
+                if (progressBar) progressBar.style.width = '0%';
+            }
+
+            function startProgress() {
+                resetProgress();
+                if (progressTimer) clearInterval(progressTimer);
+                progressTimer = setInterval(() => {
+                    progressValue += (PROGRESS_TICK / AUTO_INTERVAL) * 100;
+                    if (progressBar) progressBar.style.width = progressValue + '%';
+                    if (progressValue >= 100) clearInterval(progressTimer);
+                }, PROGRESS_TICK);
+            }
+
+            function goTo(idx) {
+                current = (idx + slideCount) % slideCount;
+                updateUI();
+                restartAuto();
+            }
+
+            function next() { goTo(current + 1); }
+            function prev() { goTo(current - 1); }
+
+            function restartAuto() {
+                if (autoTimer) clearTimeout(autoTimer);
+                if (progressTimer) clearInterval(progressTimer);
+                startProgress();
+                autoTimer = setTimeout(next, AUTO_INTERVAL);
+            }
+
+            function pauseAuto() {
+                if (autoTimer) clearTimeout(autoTimer);
+                if (progressTimer) clearInterval(progressTimer);
+            }
+
+            // ─── بناء أولي ───
+            buildSlides();
+
+            // ─── المستمعون ───
+            nextBtn?.addEventListener('click', next);
+            prevBtn?.addEventListener('click', prev);
+
+            // ─── لوحة المفاتيح ───
+            document.addEventListener('keydown', (e) => {
+                const rect = carousel.getBoundingClientRect();
+                const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (!inView) return;
+                if (e.key === 'ArrowLeft') { next(); e.preventDefault(); }
+                else if (e.key === 'ArrowRight') { prev(); e.preventDefault(); }
+            });
+
+            // ─── السحب باللمس / الماوس ───
+            let startX = 0, dragging = false, currentTranslate = 0;
+            track.addEventListener('pointerdown', (e) => {
+                dragging = true;
+                startX = e.clientX;
+                track.classList.add('is-dragging');
+                pauseAuto();
+            });
+            window.addEventListener('pointerup', () => {
+                if (!dragging) return;
+                dragging = false;
+                track.classList.remove('is-dragging');
+                if (Math.abs(currentTranslate) > 60) {
+                    if (currentTranslate < 0) next(); else prev();
+                } else {
+                    updateUI();
+                }
+                currentTranslate = 0;
+                track.style.transform = `translateX(${current * 100}%)`;
+                restartAuto();
+            });
+            track.addEventListener('pointermove', (e) => {
+                if (!dragging) return;
+                const dx = e.clientX - startX;
+                currentTranslate = dx;
+                const basePercent = current * 100;
+                const dragPercent = (dx / track.offsetWidth) * 100;
+                track.style.transform = `translateX(${basePercent + dragPercent * 0.6}%)`;
+            });
+
+            // ─── إيقاف الـ autoplay عند المرور بالفأرة ───
+            carousel?.addEventListener('mouseenter', pauseAuto);
+            carousel?.addEventListener('mouseleave', restartAuto);
+
+            // ─── بدء التشغيل ───
+            updateUI();
+            restartAuto();
+
+            // ─── إعادة البناء عند تغيّر حجم الشاشة (debounced) ───
+            let resizeTimer = null;
+            window.addEventListener('resize', () => {
+                if (resizeTimer) clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const newPerSlide = getPerSlide();
+                    if (newPerSlide !== PER_SLIDE) {
+                        PER_SLIDE = newPerSlide;
+                        slideCount = Math.max(1, Math.ceil(total / PER_SLIDE));
+                        buildSlides();
+                        restartAuto();
+                    }
+                }, 200);
+            });
+        })();
+
+                /* ════════════════════════════════════════════════════════════════
+           بناء قسم المعدات — فلاتر + شبكة بطاقات + ظهور تدريجي
+           ════════════════════════════════════════════════════════════════ */
+        (function initEquipmentSection() {
+            const cats = (typeof EQUIPMENT_CATEGORIES !== 'undefined') ? EQUIPMENT_CATEGORIES : [];
+            const filtersWrap = document.getElementById('equipment-filters');
+            const grid = document.getElementById('equipment-grid');
+            const countLabel = document.getElementById('equipment-count');
+            const catLabel = document.getElementById('equipment-categories');
+            if (!filtersWrap || !grid || !cats.length) return;
+
+            // إجمالي المعدات
+            const totalItems = cats.reduce((s, c) => s + c.items.length, 0);
+            if (countLabel) countLabel.textContent = totalItems;
+            if (catLabel) catLabel.textContent = cats.length;
+
+            // بناء الفلاتر
+            let filtersHTML = '<button class="equip-filter is-active" data-cat="all"><i class="fas fa-th-large"></i> الكل</button>';
+            cats.forEach(c => {
+                filtersHTML += `<button class="equip-filter" data-cat="${c.id}"><i class="fas ${c.icon}"></i> ${c.name}</button>`;
+            });
+            filtersWrap.innerHTML = filtersHTML;
+
+            // بناء شبكة المعدات
+            function renderGrid(filterCat) {
+                let html = '';
+                let idx = 0;
+                cats.forEach(cat => {
+                    if (filterCat !== 'all' && cat.id !== filterCat) return;
+                    cat.items.forEach(item => {
+                        const specEntries = Object.entries(item.specs || {});
+                        const specsHTML = specEntries.map(([k, v], i) =>
+                            `<span class="equip-card__spec${i === 0 ? ' is-gold' : ''}">${v}</span>`
+                        ).join('');
+                        html += `
+                        <div class="equip-card" data-cat="${cat.id}" style="transition-delay:${(idx % 6) * 60}ms">
+                            <div class="equip-card__media">
+                                <span class="equip-card__cat-badge"><i class="fas ${cat.icon}"></i> ${cat.name}</span>
+                                <img src="${item.image}" alt="${item.name}" loading="lazy"
+                                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22><rect fill=%22%23dce6f0%22 width=%22400%22 height=%22300%22/><text x=%22200%22 y=%22150%22 fill=%22%230a4a7a%22 font-size=%2230%22 text-anchor=%22middle%22 font-family=%22sans-serif%22>صورة غير متوفرة</text></svg>'">
+                            </div>
+                            <div class="equip-card__body">
+                                <h3 class="equip-card__name">${item.name}</h3>
+                                <div class="equip-card__model">${item.model}</div>
+                                <p class="equip-card__desc">${item.description}</p>
+                                <div class="equip-card__specs">${specsHTML}</div>
+                            </div>
+                        </div>`;
+                        idx++;
+                    });
+                });
+                grid.innerHTML = html;
+
+                // أعِد تهيئة الـ Intersection Observer للبطاقات الجديدة
+                observeCards();
+            }
+
+            // ظهور تدريجي للبطاقات
+            let observer = null;
+            function observeCards() {
+                if (observer) observer.disconnect();
+                observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.10 });
+                grid.querySelectorAll('.equip-card').forEach(c => observer.observe(c));
+            }
+
+            // التعامل مع الفلاتر
+            filtersWrap.querySelectorAll('.equip-filter').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filtersWrap.querySelectorAll('.equip-filter').forEach(b => b.classList.remove('is-active'));
+                    btn.classList.add('is-active');
+                    renderGrid(btn.dataset.cat);
+                });
+            });
+
+            // بناء أولي
+            renderGrid('all');
+        })();
 
         AOS.init({ duration: 800, once: true, offset: 80, easing: 'ease-out-cubic' });
 

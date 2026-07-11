@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المشروع | شركة الإنشاء والتميز</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Cairo', 'sans-serif'] },
+                    colors: {
+                        brand: { 50:'#e8f0fe',100:'#b8d0e8',200:'#88b0d2',300:'#5890bc',400:'#2870a6',500:'#0a4a7a',600:'#083a60',700:'#062a46',800:'#041a2c',900:'#020a14' },
+                        gold:  { 50:'#fdf7e6',100:'#f9ecbf',200:'#f5df99',300:'#f0d173',400:'#e8c44d',500:'#D6A347',600:'#c4923a',700:'#b0812e',800:'#9c7022',900:'#885e16' }
+                    },
+                    boxShadow: {
+                        'premium':'0 8px 40px -8px rgba(10,74,122,0.15)',
+                        'card':'0 4px 24px -6px rgba(10,74,122,0.06)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #f5f9ff;
+            color: #0a1a2e;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar { width: 8px; background: #dce6f0; }
+        ::-webkit-scrollbar-thumb { background: #0a4a7a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #083a60; }
+
+        /* ═══ شريط تقدّم القراءة (أعلى الصفحة) ═══ */
+        .reading-progress {
+            position: fixed;
+            top: 0; inset-inline-start: 0; inset-inline-end: 0;
+            height: 4px;
+            background: rgba(214,163,71,0.10);
+            z-index: 100;
+        }
+        .reading-progress__bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #D6A347, #c4923a, #D6A347);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+            transition: width 100ms linear;
+            box-shadow: 0 0 10px rgba(214,163,71,0.5);
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* ═══ شريط الرجوع ═══ */
+        .back-bar {
+            position: fixed; top: 4px; inset-inline: 0; z-index: 60;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(10,74,122,0.08);
+            padding: 12px 0;
+        }
+        .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: #0a4a7a; font-weight: 700; font-size: 0.92rem;
+            padding: 8px 16px; border-radius: 10px;
+            background: rgba(10,74,122,0.05);
+            transition: all 300ms ease;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            background: #0a4a7a; color: #fff;
+            transform: translateX(4px);
+        }
+
+        /* ═══ HERO سينمائي ═══ */
+        .project-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        .project-hero__bg {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            transform: scale(1.1);
+            animation: kenburns 12s ease-out forwards;
+            will-change: transform;
+        }
+        @keyframes kenburns {
+            0%   { transform: scale(1.1) translate(0, 0); }
+            100% { transform: scale(1.0) translate(-2%, -1%); }
+        }
+        .project-hero__overlay {
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(2,10,20,0.55) 0%, rgba(2,10,20,0.20) 35%, rgba(2,10,20,0.85) 100%),
+                linear-gradient(90deg, rgba(2,10,20,0.55) 0%, transparent 60%);
+        }
+        .project-hero__content {
+            position: relative; z-index: 2;
+            width: 100%;
+            padding: 80px 16px 90px;
+        }
+        .project-hero__badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(214,163,71,0.20);
+            border: 1px solid rgba(214,163,71,0.45);
+            color: #f5df99;
+            padding: 7px 18px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            backdrop-filter: blur(6px);
+            animation: fadeUp 800ms ease-out;
+        }
+        .project-hero__title {
+            color: #fff;
+            font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin: 18px 0 16px;
+            text-shadow: 0 4px 28px rgba(0,0,0,0.55);
+            max-width: 950px;
+            animation: fadeUp 800ms ease-out 100ms backwards;
+        }
+        .project-hero__summary {
+            color: rgba(255,255,255,0.92);
+            font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+            font-weight: 300;
+            line-height: 1.75;
+            max-width: 780px;
+            text-shadow: 0 2px 14px rgba(0,0,0,0.4);
+            animation: fadeUp 800ms ease-out 200ms backwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .project-hero__meta-row {
+            display: flex; flex-wrap: wrap; gap: 28px;
+            margin-top: 32px;
+            color: rgba(255,255,255,0.85);
+            animation: fadeUp 800ms ease-out 300ms backwards;
+        }
+        .project-hero__meta-row > div {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.95rem; font-weight: 500;
+        }
+        .project-hero__meta-row i { color: #D6A347; font-size: 1.1rem; }
+
+        /* — بطاقة القيمة الذهبية العائمة — */
+        .value-card {
+            display: inline-flex; align-items: center; gap: 14px;
+            background: linear-gradient(135deg, #D6A347, #b0812e);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 14px;
+            box-shadow: 0 14px 36px -10px rgba(214,163,71,0.55);
+            margin-top: 30px;
+            animation: fadeUp 800ms ease-out 400ms backwards;
+        }
+        .value-card__icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.18);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+        .value-card__label {
+            font-size: 0.78rem;
+            opacity: 0.85;
+            font-weight: 500;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .value-card__num {
+            font-size: 1.7rem; font-weight: 900; line-height: 1;
+        }
+        .value-card__num small { font-size: 0.7rem; font-weight: 600; opacity: 0.85; margin-inline-end: 4px; }
+
+        /* ═══ الحاوية الرئيسية للمقالة ═══ */
+        .article-wrap {
+            max-width: 1240px;
+            margin: -60px auto 0;
+            padding: 0 16px;
+            position: relative;
+            z-index: 5;
+        }
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 36px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 24px 60px -18px rgba(10,74,122,0.20);
+        }
+        @media (min-width: 1024px) {
+            .article-grid {
+                grid-template-columns: 1fr 340px;
+                padding: 64px 60px;
+                gap: 60px;
+            }
+        }
+
+        /* — عمود النص الرئيسي — */
+        .article-body { font-size: 1.05rem; line-height: 2; color: #2a3a52; }
+        .article-lead {
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: #0a4a7a;
+            line-height: 1.75;
+            margin-bottom: 32px;
+            padding-inline-end: 20px;
+            border-inline-end: 4px solid #D6A347;
+        }
+        .article-body p {
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+        .article-body p:first-of-type::first-letter {
+            font-size: 4rem;
+            font-weight: 900;
+            float: right;
+            line-height: 0.9;
+            margin: 4px 0 0 12px;
+            color: #0a4a7a;
+            font-family: 'Cairo', serif;
+        }
+        .pullquote {
+            background: linear-gradient(135deg, rgba(10,74,122,0.04), rgba(214,163,71,0.06));
+            border-inline-start: 5px solid #D6A347;
+            padding: 26px 30px;
+            margin: 36px 0;
+            border-radius: 0 14px 14px 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a4a7a;
+            line-height: 1.7;
+            position: relative;
+        }
+        .pullquote::before {
+            content: '\201D';
+            position: absolute;
+            top: -16px; inset-inline-start: 18px;
+            font-size: 5rem;
+            color: rgba(214,163,71,0.30);
+            font-family: 'Cairo', serif;
+            line-height: 1;
+        }
+
+        /* ═══ بطاقات الإحصائيات ═══ */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 40px 0 28px;
+        }
+        @media (min-width: 768px) {
+            .highlights-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        .highlight-card {
+            background: #f5f9ff;
+            border: 1px solid rgba(10,74,122,0.08);
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 500ms cubic-bezier(0.22,1,0.36,1);
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight-card::before {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #0a4a7a, #062a46);
+            opacity: 0;
+            transition: opacity 400ms ease;
+            z-index: 0;
+        }
+        .highlight-card > * { position: relative; z-index: 1; }
+        .highlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(10,74,122,0.35);
+        }
+        .highlight-card:hover::before { opacity: 1; }
+        .highlight-card:hover .highlight-card__icon,
+        .highlight-card:hover .highlight-card__value,
+        .highlight-card:hover .highlight-card__label {
+            color: #fff;
+        }
+        .highlight-card:hover .highlight-card__icon { background: rgba(214,163,71,0.25); }
+        .highlight-card__icon {
+            width: 52px; height: 52px;
+            border-radius: 12px;
+            background: rgba(10,74,122,0.08);
+            color: #0a4a7a;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            transition: all 400ms ease;
+        }
+        .highlight-card__value {
+            font-size: 1.45rem; font-weight: 900;
+            color: #0a4a7a;
+            line-height: 1.1;
+            transition: color 400ms ease;
+            font-family: 'Cairo', sans-serif;
+        }
+        .highlight-card__label {
+            font-size: 0.82rem; color: #4a6a8a;
+            margin-top: 6px;
+            transition: color 400ms ease;
+        }
+
+        /* ═══ العمود الجانبي Sticky ═══ */
+        .spec-card {
+            background: linear-gradient(180deg, #0a4a7a, #062a46);
+            color: #fff;
+            border-radius: 20px;
+            padding: 30px 26px;
+            box-shadow: 0 20px 50px -12px rgba(10,74,122,0.40);
+            position: sticky;
+            top: 90px;
+        }
+        .spec-card__title {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.15rem; font-weight: 800;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .spec-card__title i { color: #D6A347; }
+        .spec-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.12);
+            font-size: 0.93rem;
+            gap: 10px;
+        }
+        .spec-row:last-child { border-bottom: none; }
+        .spec-row__label {
+            color: rgba(255,255,255,0.65);
+            display: flex; align-items: center; gap: 8px;
+            font-weight: 500;
+        }
+        .spec-row__label i { color: #D6A347; font-size: 0.85rem; }
+        .spec-row__value {
+            font-weight: 700; color: #fff;
+            text-align: end;
+        }
+        .spec-row__value.is-money { color: #D6A347; }
+
+        .cta-side {
+            margin-top: 24px;
+            background: linear-gradient(135deg, #D6A347, #b0812e);
+            color: #fff;
+            border-radius: 14px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .cta-side__title { font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; }
+        .cta-side__sub { font-size: 0.82rem; opacity: 0.85; margin-bottom: 16px; line-height: 1.5; }
+        .cta-side__btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #fff; color: #0a4a7a;
+            padding: 11px 22px; border-radius: 10px;
+            font-weight: 700; font-size: 0.9rem;
+            transition: all 300ms ease;
+            text-decoration: none;
+        }
+        .cta-side__btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -4px rgba(0,0,0,0.30); }
+
+        /* ═══ نطاق العمل (Checklist) ═══ */
+        .scope-section {
+            max-width: 1240px;
+            margin: 70px auto;
+            padding: 0 16px;
+        }
+        .section-head {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+        .section-head__badge {
+            display: inline-block;
+            background: rgba(10,74,122,0.08);
+            color: #0a4a7a;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-head__title {
+            font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+            font-weight: 900;
+            color: #0a1a2e;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .section-head__sub {
+            color: #4a6a8a; margin-top: 10px;
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .scope-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .scope-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            background: #fff;
+            padding: 18px 22px;
+            border-radius: 14px;
+            border: 1px solid rgba(10,74,122,0.06);
+            transition: all 400ms ease;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        .scope-item.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scope-item:hover {
+            border-color: rgba(214,163,71,0.4);
+            transform: translateX(-3px);
+            box-shadow: 0 10px 22px -6px rgba(10,74,122,0.12);
+        }
+        .scope-item__check {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #D6A347, #b0812e);
+            color: #fff;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px -2px rgba(214,163,71,0.5);
+        }
+        .scope-item__text {
+            font-size: 0.95rem;
+            color: #2a3a52;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* ═══ الخط الزمني (Timeline) ═══ */
+        .timeline-section {
+            background: linear-gradient(180deg, #062a46, #020a14);
+            color: #fff;
+            padding: 80px 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .timeline-section::before {
+            content: "";
+            position: absolute;
+            top: 0; inset-inline-end: -20%;
+            width: 60%; height: 100%;
+            background: radial-gradient(ellipse at center, rgba(214,163,71,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .timeline-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-section .section-head__badge {
+            background: rgba(214,163,71,0.18);
+            color: #f5df99;
+        }
+        .timeline-section .section-head__title { color: #fff; }
+        .timeline-section .section-head__sub { color: rgba(255,255,255,0.65); }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0; bottom: 0;
+            inset-inline-start: 50%;
+            width: 3px;
+            background: linear-gradient(180deg, transparent, #D6A347 10%, #D6A347 90%, transparent);
+            transform: translateX(50%);
+        }
+        @media (max-width: 768px) {
+            .timeline::before { inset-inline-start: 18px; transform: none; }
+        }
+        .timeline-item {
+            position: relative;
+            padding: 0 40px 50px;
+            width: 50%;
+        }
+        @media (max-width: 768px) {
+            .timeline-item { width: 100%; padding-inline-start: 50px; padding-inline-end: 0; }
+        }
+        .timeline-item:nth-child(odd) {
+            inset-inline-start: 0;
+            text-align: start;
+        }
+        .timeline-item:nth-child(even) {
+            inset-inline-start: 50%;
+            text-align: end;
+        }
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(even) { inset-inline-start: 0; text-align: start; }
+        }
+        .timeline-item__dot {
+            position: absolute;
+            top: 4px;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #D6A347;
+            border: 4px solid #062a46;
+            box-shadow: 0 0 0 4px rgba(214,163,71,0.30);
+            z-index: 2;
+        }
+        .timeline-item:nth-child(odd) .timeline-item__dot {
+            inset-inline-end: -9px;
+        }
+        .timeline-item:nth-child(even) .timeline-item__dot {
+            inset-inline-start: -9px;
+        }
+        @media (max-width: 768px) {
+            .timeline-item:nth-child(odd) .timeline-item__dot,
+            .timeline-item:nth-child(even) .timeline-item__dot {
+                inset-inline-start: 10px;
+                inset-inline-end: auto;
+            }
+        }
+        .timeline-item__date {
+            font-size: 0.82rem;
+            color: #D6A347;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .timeline-item__title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .timeline-item__desc {
+            font-size: 0.92rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+        }
+
+        /* ═══ شهادة العميل ═══ */
+        .testimonial-section {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 16px;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 24px 60px -18px rgba(10,74,122,0.20);
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-card::before {
+            content: '\201D';
+            position: absolute;
+            top: -30px; inset-inline-start: 30px;
+            font-size: 14rem;
+            color: rgba(214,163,71,0.10);
+            font-family: 'Cairo', serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .testimonial-card__text {
+            font-size: clamp(1.15rem, 2vw, 1.5rem);
+            line-height: 1.8;
+            color: #0a4a7a;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .testimonial-card__author {
+            display: flex; align-items: center; gap: 16px;
+        }
+        .testimonial-card__avatar {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a4a7a, #062a46);
+            color: #fff;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px -4px rgba(10,74,122,0.30);
+        }
+        .testimonial-card__name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #0a1a2e;
+        }
+        .testimonial-card__role {
+            font-size: 0.85rem;
+            color: #4a6a8a;
+            margin-top: 2px;
+        }
+
+        /* ═══ معرض الصور ═══ */
+        .gallery-section {
+            max-width: 1240px;
+            margin: 80px auto;
+            padding: 0 16px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 260px 260px;
+            gap: 16px;
+            perspective: 1600px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 12px 32px -10px rgba(10,74,122,0.25);
+            cursor: pointer;
+            transition: transform 600ms cubic-bezier(0.22,1,0.36,1), box-shadow 500ms ease;
+            transform-style: preserve-3d;
+        }
+        .gallery-item:nth-child(1) { grid-row: 1 / span 2; grid-column: 1; }
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 900ms cubic-bezier(0.22,1,0.36,1);
+        }
+        .gallery-item::after {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(2,10,20,0.80) 100%);
+            opacity: 0.8;
+            transition: opacity 400ms ease;
+        }
+        .gallery-item__label {
+            position: absolute;
+            bottom: 16px; inset-inline-start: 18px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 400ms ease 100ms;
+            z-index: 2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .gallery-item__zoom {
+            position: absolute;
+            top: 14px; inset-inline-end: 14px;
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.20);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.85rem;
+            opacity: 0;
+            transition: all 400ms ease;
+            z-index: 2;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px) rotateX(4deg) rotateY(-3deg) scale(1.03);
+            box-shadow: 0 36px 70px -15px rgba(10,74,122,0.40);
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        .gallery-item:hover .gallery-item__label { opacity: 1; transform: translateY(0); }
+        .gallery-item:hover .gallery-item__zoom { opacity: 1; }
+        .gallery-item:hover img { transform: scale(1.10); }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 200px 200px 200px;
+            }
+            .gallery-item:nth-child(1) {
+                grid-row: 1; grid-column: 1 / -1;
+            }
+        }
+
+        /* ═══ الـ Lightbox (Modal لعرض الصور بحجم كامل) ═══ */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(2,10,20,0.95);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            backdrop-filter: blur(8px);
+        }
+        .lightbox.is-open { display: flex; animation: fadeIn 300ms ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .lightbox__img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: zoomIn 400ms cubic-bezier(0.22,1,0.36,1);
+        }
+        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .lightbox__caption {
+            position: absolute;
+            bottom: 30px;
+            inset-inline: 0;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .lightbox__close {
+            position: absolute;
+            top: 20px; inset-inline-end: 24px;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: none; cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 300ms ease;
+        }
+        .lightbox__close:hover { background: #D6A347; transform: rotate(90deg); }
+        .lightbox__nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: none; cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 300ms ease;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .lightbox__nav:hover { background: #D6A347; }
+        .lightbox__nav--prev { inset-inline-start: 24px; }
+        .lightbox__nav--next { inset-inline-end: 24px; }
+
+        /* ═══ التنقل بين المشاريع (السابق/التالي) ═══ */
+        .nav-projects {
+            max-width: 1240px;
+            margin: 80px auto 100px;
+            padding: 0 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 640px) { .nav-projects { grid-template-columns: 1fr; } }
+        .nav-proj-card {
+            display: flex; align-items: center; gap: 16px;
+            padding: 22px;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid rgba(10,74,122,0.08);
+            transition: all 400ms ease;
+            text-decoration: none;
+            color: #0a1a2e;
+        }
+        .nav-proj-card:hover {
+            border-color: #D6A347;
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px -10px rgba(10,74,122,0.20);
+        }
+        .nav-proj-card__thumb {
+            width: 72px; height: 72px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #dce6f0;
+            position: relative;
+        }
+        .nav-proj-card__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+        .nav-proj-card:hover .nav-proj-card__thumb img { transform: scale(1.1); }
+        .nav-proj-card__label { font-size: 0.74rem; color: #8aa0c0; font-weight: 600; }
+        .nav-proj-card__title { font-size: 1rem; font-weight: 700; color: #0a4a7a; margin-top: 2px; line-height: 1.4; }
+        .nav-proj-card--prev { justify-content: flex-start; }
+        .nav-proj-card--next { justify-content: flex-end; text-align: end; flex-direction: row-reverse; }
+        .nav-proj-card__arrow {
+            color: #D6A347; font-size: 1.3rem;
+            transition: transform 400ms ease;
+        }
+        .nav-proj-card--prev:hover .nav-proj-card__arrow { transform: translateX(6px); }
+        .nav-proj-card--next:hover .nav-proj-card__arrow { transform: translateX(-6px); }
+
+        /* ═══ الفوتر ═══ */
+        .footer-mini {
+            background: #020a14;
+            color: rgba(255,255,255,0.6);
+            padding: 36px 16px;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+        .footer-mini a { color: #D6A347; text-decoration: none; }
+        .footer-mini strong { color: #fff; }
+
+        /* ═══ حالة "غير موجود" ═══ */
+        .notfound {
+            min-height: 70vh;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 18px;
+            text-align: center; padding: 80px 16px;
+            margin-top: 60px;
+        }
+        .notfound__icon {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(214,163,71,0.18), rgba(10,74,122,0.08));
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: #D6A347;
+            margin-bottom: 8px;
+        }
+        .notfound h1 { font-size: 2.2rem; color: #0a4a7a; font-weight: 900; }
+        .notfound p { color: #4a6a8a; max-width: 500px; line-height: 1.7; }
+        .notfound a {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #0a4a7a; color: #fff;
+            padding: 14px 26px; border-radius: 12px;
+            font-weight: 700; text-decoration: none;
+            transition: all 300ms ease;
+            margin-top: 8px;
+        }
+        .notfound a:hover { background: #062a46; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <!-- شريط تقدّم القراءة -->
+    <div class="reading-progress"><div class="reading-progress__bar" id="reading-progress"></div></div>
+
+    <!-- شريط الرجوع -->
+    <div class="back-bar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="index.html#projects" class="back-link">
+                <i class="fas fa-arrow-right"></i>
+                العودة إلى كل المشاريع
+            </a>
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="images/logo.png" alt="شعار" class="h-10 w-auto">
+                <span class="text-brand-700 font-extrabold hidden sm:inline">الإنشاء والتميز</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══ HERO سينمائي (يُملأ ديناميكياً) ═══ -->
+    <section class="project-hero" id="project-hero">
+        <div class="project-hero__bg" id="hero-bg"></div>
+        <div class="project-hero__overlay"></div>
+        <div class="project-hero__content">
+            <div class="max-w-7xl mx-auto">
+                <span class="project-hero__badge">
+                    <i class="fas fa-folder-open"></i>
+                    <span id="hero-type">—</span>
+                </span>
+                <h1 class="project-hero__title" id="hero-title">—</h1>
+                <p class="project-hero__summary" id="hero-summary">—</p>
+
+                <div class="project-hero__meta-row" id="hero-meta"></div>
+
+                <div class="value-card">
+                    <div class="value-card__icon"><i class="fas fa-coins"></i></div>
+                    <div>
+                        <div class="value-card__label">القيمة الإجمالية للمشروع</div>
+                        <div class="value-card__num"><small>ر.س</small><span id="hero-value">—</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ جسم المقالة + العمود الجانبي ═══ -->
+    <div class="article-wrap">
+        <div class="article-grid">
+            <article class="article-body" id="article-body"></article>
+            <aside>
+                <div class="spec-card" data-aos="fade-left">
+                    <div class="spec-card__title">
+                        <i class="fas fa-clipboard-list"></i>
+                        مواصفات المشروع
+                    </div>
+                    <div id="spec-list"></div>
+                    <div class="cta-side">
+                        <div class="cta-side__title">لديك مشروع مشابه؟</div>
+                        <div class="cta-side__sub">تواصل مع فريقنا للحصول على عرض سعر مخصّص ودراسة هندسية مجانية</div>
+                        <a href="index.html#contact" class="cta-side__btn">
+                            <i class="fas fa-phone-volume"></i>
+                            اطلب عرضاً
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- ═══ الإحصائيات البارزة ═══ -->
+    <section class="gallery-section" style="margin-top: 70px;">
+        <div class="section-head" data-aos="fade-up">
+            <span class="section-head__badge">إنجازات</span>
+            <h2 class="section-head__title">أبرز أرقام المشروع</h2>
+            <p class="section-head__sub">مؤشرات الأداء الرئيسية التي تحققت على أرض الواقع</p>
+        </div>
+        <div class="highlights-grid" id="highlights-grid"></div>
+    </section>
+
+    <!-- ═══ نطاق العمل (Scope) ═══ -->
+    <section class="scope-section">
+        <div class="section-head" data-aos="fade-up">
+            <span class="section-head__badge">نطاق العمل</span>
+            <h2 class="section-head__title">ما الذي أنجزناه فعلياً</h2>
+            <p class="section-head__sub">قائمة تفصيلية بجميع الأعمال التي تم تنفيذها في إطار هذا المشروع</p>
+        </div>
+        <div class="scope-grid" id="scope-grid"></div>
+    </section>
+
+    <!-- ═══ الخط الزمني ═══ -->
+    <section class="timeline-section">
+        <div class="timeline-wrap">
+            <div class="section-head" data-aos="fade-up">
+                <span class="section-head__badge">الخط الزمني</span>
+                <h2 class="section-head__title">مراحل تنفيذ المشروع</h2>
+                <p class="section-head__sub">رحلة المشروع من البداية حتى التسليم النهائي</p>
+            </div>
+            <div class="timeline" id="timeline"></div>
+        </div>
+    </section>
+
+    <!-- ═══ معرض الصور ═══ -->
+    <section class="gallery-section">
+        <div class="section-head" data-aos="fade-up">
+            <span class="section-head__badge">معرض الصور</span>
+            <h2 class="section-head__title">لمحات من أرض المشروع</h2>
+            <p class="section-head__sub">اضغط على أي صورة لعرضها بحجم كامل</p>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- ═══ شهادة العميل ═══ -->
+    <section class="testimonial-section">
+        <div class="section-head" data-aos="fade-up">
+            <span class="section-head__badge">شهادة العميل</span>
+            <h2 class="section-head__title">ماذا قالوا عنّا</h2>
+        </div>
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+            <p class="testimonial-card__text" id="testimonial-text">—</p>
+            <div class="testimonial-card__author">
+                <div class="testimonial-card__avatar"><i class="fas fa-user"></i></div>
+                <div>
+                    <div class="testimonial-card__name" id="testimonial-author">—</div>
+                    <div class="testimonial-card__role" id="testimonial-role">—</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ التنقل بين المشاريع ═══ -->
+    <nav class="nav-projects" id="nav-projects"></nav>
+
+    <!-- ═══ Lightbox ═══ -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox__close" id="lightbox-close"><i class="fas fa-times"></i></button>
+        <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev"><i class="fas fa-chevron-right"></i></button>
+        <img class="lightbox__img" id="lightbox-img" src="" alt="">
+        <button class="lightbox__nav lightbox__nav--next" id="lightbox-next"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox__caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- فوتر مختصر -->
+    <footer class="footer-mini">
+        <div>© شركة الإنشاء والتميز للمقاولات العامة · <strong>تصميم وتطوير المهندس نادر وضاح</strong></div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/projects-data.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+        (function renderProject() {
+            // قراءة ?id=X
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get('id'), 10);
+
+            const list = (typeof PROJECTS !== 'undefined') ? PROJECTS : [];
+            const project = list.find(p => p.id === id);
+
+            // ─── حالة عدم وجود المشروع ───
+            if (!project) {
+                document.body.innerHTML = `
+                    <div class="reading-progress"></div>
+                    <div class="back-bar"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <a href="index.html#projects" class="back-link"><i class="fas fa-arrow-right"></i> العودة إلى المشاريع</a>
+                    </div></div>
+                    <div class="notfound">
+                        <div class="notfound__icon"><i class="fas fa-folder-xmark"></i></div>
+                        <h1>المشروع غير موجود</h1>
+                        <p>لم نتمكن من العثور على المشروع المطلوب. ربما تم حذفه أو أن الرابط غير صحيح.</p>
+                        <a href="index.html#projects"><i class="fas fa-arrow-right"></i> تصفّح كل المشاريع</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // تحديث عنوان الصفحة
+            document.title = `${project.name} | شركة الإنشاء والتميز`;
+
+            // ─── HERO ───
+            const heroBg = document.getElementById('hero-bg');
+            heroBg.style.backgroundImage = `url('${project.cover}')`;
+
+            document.getElementById('hero-type').textContent = project.type;
+            document.getElementById('hero-title').textContent = project.name;
+            document.getElementById('hero-summary').textContent = project.summary;
+            document.getElementById('hero-value').textContent = project.value;
+
+            const metaItems = [
+                { icon: 'fa-building',       label: project.client },
+                { icon: 'fa-map-marker-alt', label: project.location },
+                { icon: 'fa-calendar',       label: project.year },
+                { icon: 'fa-clock',          label: project.duration }
+            ];
+            document.getElementById('hero-meta').innerHTML = metaItems.map(m =>
+                `<div><i class="fas ${m.icon}"></i><span>${m.label}</span></div>`
+            ).join('');
+
+            // ─── جسم المقالة ───
+            const article = document.getElementById('article-body');
+            const firstP = `<p>${project.description[0]}</p>`;
+            const pullquoteHTML = project.summary
+                ? `<div class="pullquote" data-aos="fade-up">${project.summary}</div>`
+                : '';
+            const restPs = project.description.slice(1).map(p => `<p>${p}</p>`).join('');
+            article.innerHTML = `
+                <p class="article-lead">${project.summary}</p>
+                ${firstP}
+                ${pullquoteHTML}
+                ${restPs}
+            `;
+
+            // ─── العمود الجانبي (المواصفات) ───
+            const specRows = [
+                { icon: 'fa-tag',           label: 'النوع',          value: project.type },
+                { icon: 'fa-building',      label: 'الجهة المتعاقدة', value: project.client },
+                { icon: 'fa-map-marker-alt',label: 'الموقع',         value: project.location },
+                { icon: 'fa-coins',         label: 'القيمة',         value: `${project.value} ر.س`, isMoney: true },
+                { icon: 'fa-calendar',      label: 'سنة التنفيذ',    value: project.year },
+                { icon: 'fa-clock',         label: 'مدة التنفيذ',    value: project.duration }
+            ];
+            document.getElementById('spec-list').innerHTML = specRows.map(r => `
+                <div class="spec-row">
+                    <span class="spec-row__label"><i class="fas ${r.icon}"></i>${r.label}</span>
+                    <span class="spec-row__value${r.isMoney ? ' is-money' : ''}">${r.value}</span>
+                </div>
+            `).join('');
+
+            // ─── الإحصائيات ───
+            document.getElementById('highlights-grid').innerHTML = project.highlights.map((h, i) => `
+                <div class="highlight-card" data-aos="fade-up" data-aos-delay="${i * 80}">
+                    <div class="highlight-card__icon"><i class="fas ${h.icon}"></i></div>
+                    <div class="highlight-card__value">${h.value}</div>
+                    <div class="highlight-card__label">${h.label}</div>
+                </div>
+            `).join('');
+
+            // ─── نطاق العمل (Checklist) ───
+            document.getElementById('scope-grid').innerHTML = project.scope.map((s, i) => `
+                <div class="scope-item" data-delay="${i * 80}">
+                    <div class="scope-item__check"><i class="fas fa-check"></i></div>
+                    <div class="scope-item__text">${s}</div>
+                </div>
+            `).join('');
+
+            // ظهور تدريجي لنطاق العمل عند التمرير
+            const scopeObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, idx) => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.delay || '0', 10);
+                        setTimeout(() => entry.target.classList.add('is-visible'), delay);
+                        scopeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.scope-item').forEach(el => scopeObserver.observe(el));
+
+            // ─── الخط الزمني ───
+            document.getElementById('timeline').innerHTML = project.milestones.map((m, i) => `
+                <div class="timeline-item" data-aos="${i % 2 === 0 ? 'fade-right' : 'fade-left'}" data-aos-delay="${i * 100}">
+                    <div class="timeline-item__dot"></div>
+                    <div class="timeline-item__date">${m.date}</div>
+                    <div class="timeline-item__title">${m.title}</div>
+                    <div class="timeline-item__desc">${m.description}</div>
+                </div>
+            `).join('');
+
+            // ─── معرض الصور ───
+            const galleryHTML = project.gallery.map((g, i) => `
+                <div class="gallery-item" data-index="${i}" data-aos="zoom-in" data-aos-delay="${i * 100}">
+                    <img src="${g.src}" alt="${project.name} - ${g.label}" loading="lazy">
+                    <div class="gallery-item__zoom"><i class="fas fa-expand"></i></div>
+                    <span class="gallery-item__label">${g.label}</span>
+                </div>
+            `).join('');
+            document.getElementById('gallery-grid').innerHTML = galleryHTML;
+
+            // ─── Lightbox ───
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            let currentLightboxIndex = 0;
+
+            function openLightbox(idx) {
+                currentLightboxIndex = idx;
+                const item = project.gallery[idx];
+                lightboxImg.src = item.src;
+                lightboxCaption.textContent = `${item.label} (${idx + 1} / ${project.gallery.length})`;
+                lightbox.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+            function lightboxNav(direction) {
+                currentLightboxIndex = (currentLightboxIndex + direction + project.gallery.length) % project.gallery.length;
+                openLightbox(currentLightboxIndex);
+            }
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    openLightbox(parseInt(item.dataset.index, 10));
+                });
+            });
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox-prev').addEventListener('click', () => lightboxNav(-1));
+            document.getElementById('lightbox-next').addEventListener('click', () => lightboxNav(1));
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('is-open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowLeft') lightboxNav(1);   // في RTL، يسار = التالي
+                else if (e.key === 'ArrowRight') lightboxNav(-1); // يمين = السابق
+            });
+
+            // ─── شهادة العميل ───
+            if (project.testimonial) {
+                document.getElementById('testimonial-text').textContent = project.testimonial.text;
+                document.getElementById('testimonial-author').textContent = project.testimonial.author;
+                document.getElementById('testimonial-role').textContent = project.testimonial.role;
+            } else {
+                document.querySelector('.testimonial-section').style.display = 'none';
+            }
+
+            // ─── التنقل بين المشاريع ───
+            const idx = list.findIndex(p => p.id === id);
+            const prev = idx > 0 ? list[idx - 1] : list[list.length - 1];
+            const next = idx < list.length - 1 ? list[idx + 1] : list[0];
+
+            document.getElementById('nav-projects').innerHTML = `
+                <a href="project.html?id=${prev.id}" class="nav-proj-card nav-proj-card--prev" data-aos="fade-right">
+                    <div class="nav-proj-card__thumb"><img src="${prev.cover}" alt="${prev.name}"></div>
+                    <div>
+                        <div class="nav-proj-card__label"><i class="fas fa-arrow-right nav-proj-card__arrow"></i> المشروع السابق</div>
+                        <div class="nav-proj-card__title">${prev.shortName}</div>
+                    </div>
+                </a>
+                <a href="project.html?id=${next.id}" class="nav-proj-card nav-proj-card--next" data-aos="fade-left">
+                    <div>
+                        <div class="nav-proj-card__label">المشروع التالي <i class="fas fa-arrow-left nav-proj-card__arrow"></i></div>
+                        <div class="nav-proj-card__title">${next.shortName}</div>
+                    </div>
+                    <div class="nav-proj-card__thumb"><img src="${next.cover}" alt="${next.name}"></div>
+                </a>
+            `;
+
+            // ─── شريط تقدّم القراءة ───
+            const progressBar = document.getElementById('reading-progress');
+            function updateProgress() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = percent + '%';
+            }
+            window.addEventListener('scroll', updateProgress, { passive: true });
+            updateProgress();
+
+            // أعِد تهيئة AOS بعد الحقن الديناميكي
+            AOS.refresh();
+        })();
+    </script>
+
+</body>
+</html>
