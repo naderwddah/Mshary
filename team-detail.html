@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تفاصيل الكادر | شركة الإنشاء والتميز</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts (Cairo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#e8f0fe', 100: '#b8d0e8', 200: '#88b0d2', 300: '#5890bc',
+              400: '#2870a6', 500: '#0a4a7a', 600: '#083a60', 700: '#062a46',
+              800: '#041a2c', 900: '#020a14'
+            },
+            gold: {
+              50: '#fdf7e6', 100: '#f9ecbf', 200: '#f5df99', 300: '#f0d173',
+              400: '#e8c44d', 500: '#D6A347', 600: '#c4923a', 700: '#b0812e',
+              800: '#9c7022', 900: '#885e16'
+            }
+          },
+          boxShadow: {
+            'premium': '0 8px 40px -8px rgba(10,74,122,0.15)',
+            'premium-lg': '0 20px 60px -12px rgba(10,74,122,0.20)',
+            'card': '0 4px 24px -6px rgba(10,74,122,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ═══ الأنماط الأساسية ═══ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f5f9ff;
+      color: #0a1a2e;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #dce6f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0a4a7a;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #083a60;
+    }
+
+    /* ═══ شريط تقدّم القراءة ═══ */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      height: 4px;
+      background: rgba(214, 163, 71, 0.10);
+      z-index: 100;
+    }
+    .reading-progress__bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D6A347, #c4923a, #D6A347);
+      background-size: 200% 100%;
+      animation: shimmer 3s linear infinite;
+      transition: width 100ms linear;
+      box-shadow: 0 0 10px rgba(214, 163, 71, 0.5);
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* ═══ شريط الرجوع ═══ */
+    .back-bar {
+      position: fixed;
+      top: 4px;
+      inset-inline: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(10, 74, 122, 0.08);
+      padding: 12px 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #0a4a7a;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 8px 16px;
+      border-radius: 10px;
+      background: rgba(10, 74, 122, 0.05);
+      transition: all 300ms ease;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      background: #0a4a7a;
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* ═══ البطاقة الرئيسية ═══ */
+    .detail-card {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px -18px rgba(10, 74, 122, 0.20);
+      border: 1px solid rgba(10, 74, 122, 0.06);
+    }
+    .detail-card__header {
+      background: linear-gradient(135deg, #0a4a7a, #062a46);
+      padding: 40px 30px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .detail-card__header::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(214, 163, 71, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .detail-card__avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.20);
+      object-fit: cover;
+      box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.30);
+      position: relative;
+      z-index: 2;
+      background: #2a4a6a;
+    }
+    .detail-card__name {
+      color: #fff;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 900;
+      margin-top: 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .detail-card__role {
+      color: #D6A347;
+      font-size: 1.1rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 2;
+    }
+    .detail-card__badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      padding: 4px 16px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .detail-card__body {
+      padding: 32px 28px;
+    }
+    .detail-card__body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0a4a7a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      border-bottom: 2px solid rgba(10, 74, 122, 0.06);
+      padding-bottom: 10px;
+    }
+    .detail-card__body h3 i {
+      color: #D6A347;
+    }
+    .detail-card__body p,
+    .detail-card__body li {
+      color: #3a5a7a;
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+    .detail-card__body ul {
+      list-style: none;
+      padding: 0;
+    }
+    .detail-card__body ul li {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(10, 74, 122, 0.04);
+    }
+    .detail-card__body ul li:last-child {
+      border-bottom: none;
+    }
+    .detail-card__body ul li i {
+      color: #D6A347;
+      width: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    .detail-card__body .tag {
+      display: inline-block;
+      background: rgba(10, 74, 122, 0.06);
+      color: #0a4a7a;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin: 3px 4px 3px 0;
+      border: 1px solid rgba(10, 74, 122, 0.06);
+    }
+    .detail-card__body .tag-gold {
+      background: rgba(214, 163, 71, 0.12);
+      color: #b0812e;
+      border-color: rgba(214, 163, 71, 0.15);
+    }
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #0a4a7a, #062a46);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: all 300ms ease;
+      text-decoration: none;
+      box-shadow: 0 8px 24px -6px rgba(10, 74, 122, 0.30);
+    }
+    .btn-contact:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px -8px rgba(10, 74, 122, 0.40);
+    }
+    .btn-contact-outline {
+      background: transparent;
+      border: 2px solid rgba(10, 74, 122, 0.15);
+      color: #0a4a7a;
+      box-shadow: none;
+    }
+    .btn-contact-outline:hover {
+      background: #0a4a7a;
+      color: #fff;
+      border-color: #0a4a7a;
+    }
+
+    /* ═══ حالة "غير موجود" ═══ */
+    .notfound {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 18px;
+      text-align: center;
+      padding: 80px 16px;
+      margin-top: 60px;
+    }
+    .notfound__icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(214, 163, 71, 0.18), rgba(10, 74, 122, 0.08));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #D6A347;
+      margin-bottom: 8px;
+    }
+    .notfound h1 {
+      font-size: 2.2rem;
+      color: #0a4a7a;
+      font-weight: 900;
+    }
+    .notfound p {
+      color: #4a6a8a;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+    .notfound a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0a4a7a;
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 300ms ease;
+      margin-top: 8px;
+    }
+    .notfound a:hover {
+      background: #062a46;
+      transform: translateY(-2px);
+    }
+
+    /* ═══ الفوتر ═══ */
+    .footer-mini {
+      background: #020a14;
+      color: rgba(255, 255, 255, 0.6);
+      padding: 36px 16px;
+      text-align: center;
+      font-size: 0.88rem;
+      margin-top: 40px;
+    }
+    .footer-mini strong {
+      color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .detail-card__avatar {
+        width: 110px;
+        height: 110px;
+      }
+      .detail-card__header {
+        padding: 30px 20px 24px;
+      }
+      .detail-card__body {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط تقدّم القراءة -->
+  <div class="reading-progress"><div class="reading-progress__bar" id="reading-progress"></div></div>
+
+  <!-- شريط الرجوع -->
+  <div class="back-bar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <a href="index.html#team" class="back-link">
+        <i class="fas fa-arrow-right"></i>
+        العودة إلى الكوادر
+      </a>
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/logo.png" alt="شعار" class="h-10 w-auto">
+        <span class="text-brand-700 font-extrabold hidden sm:inline text-sm">الإنشاء والتميز</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ المحتوى الرئيسي ═══ -->
+  <main class="pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto" id="main-content">
+    <!-- سيتم حقن المحتوى ديناميكياً بواسطة JavaScript -->
+  </main>
+
+  <!-- فوتر مختصر -->
+  <footer class="footer-mini">
+    <div>© شركة الإنشاء والتميز للمقاولات العامة · <strong>تصميم وتطوير المهندس نادر وضاح</strong></div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // ════════════════════════════════════════════════════════════════
+    // بيانات الكادر (TEAM_MEMBERS) — نفس البيانات المستخدمة في الصفحة الرئيسية
+    // ════════════════════════════════════════════════════════════════
+    const TEAM_MEMBERS = [{
+      id: 1,
+      name: 'حامد باتل العنزي',
+      role: 'رئيس مجلس الإدارة',
+      experience: '30+ سنة خبرة',
+      image: 'images/team/chairman.jpg',
+      bio: 'مؤسس ورئيس مجلس إدارة شركة الإنشاء والتميز. يمتلك خبرة عميقة في مجال المقاولات والبنية التحتية، وقاد الشركة لتصبح شريكاً موثوقاً للأمانات والبلديات في منطقة الحدود الشمالية. يؤمن بالجودة والالتزام كأساس للثقة والنجاح.',
+      qualifications: [
+        'ماجستير إدارة أعمال',
+        'بكالوريوس هندسة مدنية',
+        'خبرة قيادية في القطاع الحكومي والخاص'
+      ],
+      projects: [
+        'تأسيس شركة الإنشاء والتميز للمقاولات العامة',
+        'قيادة أكثر من 76 مشروعاً بنجاح',
+        'تطوير استراتيجيات النمو والتوسع الجغرافي'
+      ],
+      certifications: [
+        'عضو الغرفة التجارية الصناعية بعرعر',
+        'شهادة قيادة معتمدة',
+        'رخصة مقاولات عامة الدرجة الثانية'
+      ],
+      contact: {
+        email: 'F-hamed1433@hotmail.com',
+        phone: '0591233334'
+      }
+    }, {
+      id: 2,
+      name: 'م. مايكل ريك بقطر حلف',
+      role: 'مدير المشروعات',
+      experience: '19 سنة خبرة',
+      image: 'images/team/engineer-1.jpg',
+      bio: 'يشرف على تنفيذ جميع المشاريع من البداية إلى التسليم، ويضمن الالتزام بالجودة والمواصفات والجدول الزمني. يتمتع بخبرة واسعة في إدارة مشاريع البنية التحتية الكبرى.',
+      qualifications: [
+        'ماجستير إدارة مشاريع',
+        'بكالوريوس هندسة مدنية',
+        'خبرة دولية في إدارة المشاريع'
+      ],
+      projects: [
+        'صيانة الشوارع والأرصفة بمركز الشعبة (4M ر.س)',
+        'توريد دهانات وبرودرات لأمانة حفر الباطن',
+        'درء أخطار السيوط بشعبة نصاب (4 مراحل)'
+      ],
+      certifications: [
+        'PMP (إدارة المشاريع الاحترافية)',
+        'ISO 9001 Lead Auditor',
+        'شهادة السلامة المهنية'
+      ],
+      contact: {
+        email: 'michael@construction-excellence.com',
+        phone: '0501234567'
+      }
+    }, {
+      id: 3,
+      name: 'تركي حامد العنزي',
+      role: 'مدير الموارد البشرية',
+      experience: '6 سنوات خبرة',
+      image: 'images/team/hr-manager.jpg',
+      bio: 'يدير فريق العمل ويشرف على تطوير الكوادر الوطنية، ويعمل على بناء بيئة عمل محفزة وإيجابية. يركز على استقطاب المواهب وتدريب الكوادر الشابة.',
+      qualifications: [
+        'بكالوريوس إدارة موارد بشرية',
+        'دبلوم تطوير قيادي',
+        'خبرة في إدارة الأفراد'
+      ],
+      projects: [
+        'توطين الكوادر (نسبة توطين 29%)',
+        'برامج تدريب وتطوير للموظفين',
+        'إعادة هيكلة الموارد البشرية'
+      ],
+      certifications: [
+        'SHRM (إدارة الموارد البشرية)',
+        'أخصائي موارد بشرية معتمد',
+        'شهادة قيادة وتطوير'
+      ],
+      contact: {
+        email: 'turki@construction-excellence.com',
+        phone: '0561234567'
+      }
+    }, {
+      id: 4,
+      name: 'م. محمد عوض الكامل',
+      role: 'مهندس الموقع',
+      experience: '6 سنوات خبرة',
+      image: 'images/team/engineer-2.jpg',
+      bio: 'يشرف على الأعمال الميدانية اليومية، ويتابع تنفيذ الرصف والدهانات والإنارة وفق أعلى معايير الجودة. يتمتع بمهارات فنية عالية في تنفيذ المشاريع المدنية.',
+      qualifications: [
+        'بكالوريوس هندسة مدنية',
+        'خبرة ميدانية واسعة',
+        'إشراف على مشاريع البنية التحتية'
+      ],
+      projects: [
+        'تأهيل شوارع طاعة التماط (2M ر.س)',
+        'حدائق وممرات مشاة بشعبة نصاب',
+        'صيانة المخططات السكنية'
+      ],
+      certifications: [
+        'مهندس موقع معتمد',
+        'شهادة سلامة وصحة مهنية',
+        'ISO 9001 Internal Auditor'
+      ],
+      contact: {
+        email: 'mohamed@construction-excellence.com',
+        phone: '0531234567'
+      }
+    }, {
+      id: 5,
+      name: 'أحمد يحيى عزت',
+      role: 'حاسب الكميات (مساح)',
+      experience: '12 سنة خبرة',
+      image: 'images/team/quantity-surveyor.jpg',
+      bio: 'يتولى تقدير الكميات وإعداد جداول الأعمال والتكاليف، ويضمن الدقة في حسابات المشاريع. يمتلك خبرة طويلة في المساحة والتقدير الهندسي.',
+      qualifications: [
+        'بكالوريوس مساحة',
+        'دبلوم تقدير كميات',
+        'خبرة في التقدير الهندسي'
+      ],
+      projects: [
+        'تقدير كميات جميع مشاريع الشركة',
+        'إعداد جداول الأعمال والتكاليف',
+        'مراجعة العقود والمواصفات'
+      ],
+      certifications: [
+        'تقدير كميات معتمد',
+        'شهادة مساحة معتمدة',
+        'خبير تقدير هندسي'
+      ],
+      contact: {
+        email: 'ahmed@construction-excellence.com',
+        phone: '0541234567'
+      }
+    }, {
+      id: 6,
+      name: 'تفريد العنزي',
+      role: 'مسؤول الجودة',
+      experience: 'سنتان خبرة',
+      image: 'images/team/quality.jpg',
+      bio: 'يشرف على فحص المواد والخلطات الإسفلتية، ويضمن مطابقة التنفيذ للمواصفات الفنية المعتمدة. يحرص على تطبيق أعلى معايير الجودة في جميع المشاريع.',
+      qualifications: [
+        'دبلوم جودة وإنتاج',
+        'خبرة في مختبرات المواد',
+        'فحص الخلطات الإسفلتية'
+      ],
+      projects: [
+        'ضبط الجودة في مشاريع الإنارة',
+        'فحص خلطات الأسفلت في مشاريع الرصف',
+        'ضمان مطابقة المواد للمواصفات'
+      ],
+      certifications: [
+        'ISO 9001 Internal Auditor',
+        'شهادة فحص المواد',
+        'جودة وسلامة معتمدة'
+      ],
+      contact: {
+        email: 'tafreid@construction-excellence.com',
+        phone: '0551234567'
+      }
+    }];
+
+    // ════════════════════════════════════════════════════════════════
+    // عرض تفاصيل الموظف
+    // ════════════════════════════════════════════════════════════════
+    (function renderTeamDetail() {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'), 10);
+
+      const member = TEAM_MEMBERS.find(m => m.id === id);
+      const container = document.getElementById('main-content');
+
+      // ─── حالة عدم وجود الموظف ───
+      if (!member) {
+        container.innerHTML = `
+            <div class="notfound">
+              <div class="notfound__icon"><i class="fas fa-user-slash"></i></div>
+              <h1>الموظف غير موجود</h1>
+              <p>لم نتمكن من العثور على الموظف المطلوب. قد يكون الرابط غير صحيح أو تم حذف البيانات.</p>
+              <a href="index.html#team"><i class="fas fa-arrow-right"></i> العودة إلى الكوادر</a>
+            </div>
+          `;
+        return;
+      }
+
+      // تحديث عنوان الصفحة
+      document.title = `${member.name} | الكادر الإداري والفني`;
+
+      // بناء صورة احتياطية إذا لم توجد الصورة
+      const avatarFallback = (name) => {
+        const initial = name.charAt(0);
+        return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%230a4a7a" width="100" height="100"/><text x="50" y="55" fill="%23d6a347" font-size="44" text-anchor="middle" font-family="sans-serif">${initial}</text></svg>`;
+      };
+
+      // ─── عرض التفاصيل ───
+      container.innerHTML = `
+          <div class="detail-card" data-aos="fade-up" data-aos-duration="800">
+            <!-- رأس البطاقة -->
+            <div class="detail-card__header text-center">
+              <img src="${member.image}" alt="${member.name}" class="detail-card__avatar mx-auto" 
+                   onerror="this.src='${avatarFallback(member.name)}'">
+              <h1 class="detail-card__name">${member.name}</h1>
+              <p class="detail-card__role"><i class="fas fa-briefcase ml-1"></i> ${member.role}</p>
+              <span class="detail-card__badge"><i class="fas fa-calendar-alt ml-1"></i> ${member.experience}</span>
+            </div>
+
+            <!-- جسم البطاقة -->
+            <div class="detail-card__body">
+              <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- العمود الأيمن: السيرة والمؤهلات -->
+                <div>
+                  <!-- السيرة الذاتية -->
+                  <h3><i class="fas fa-user"></i> السيرة المهنية</h3>
+                  <p>${member.bio}</p>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    <span class="tag tag-gold"><i class="fas fa-check-circle ml-1"></i> خبير</span>
+                    <span class="tag"><i class="fas fa-building ml-1"></i> شركة الإنشاء والتميز</span>
+                  </div>
+
+                  <!-- المؤهلات العلمية -->
+                  <h3 class="mt-6"><i class="fas fa-graduation-cap"></i> المؤهلات العلمية</h3>
+                  <ul>
+                    ${member.qualifications.map(q => `<li><i class="fas fa-check-circle"></i> ${q}</li>`).join('')}
+                  </ul>
+
+                  <!-- الشهادات والاعتمادات -->
+                  <h3 class="mt-6"><i class="fas fa-certificate"></i> الشهادات والاعتمادات</h3>
+                  <ul>
+                    ${member.certifications.map(c => `<li><i class="fas fa-award"></i> ${c}</li>`).join('')}
+                  </ul>
+                </div>
+
+                <!-- العمود الأيسر: المشاريع والتواصل -->
+                <div>
+                  <!-- المشاريع التي شارك فيها -->
+                  <h3><i class="fas fa-project-diagram"></i> المشاريع المنفذة</h3>
+                  <ul>
+                    ${member.projects.map(p => `<li><i class="fas fa-arrow-left"></i> ${p}</li>`).join('')}
+                  </ul>
+
+                  <!-- التواصل -->
+                  <h3 class="mt-6"><i class="fas fa-phone"></i> التواصل</h3>
+                  <div class="flex flex-wrap gap-3 mt-2">
+                    <a href="mailto:${member.contact.email}" class="btn-contact">
+                      <i class="fas fa-envelope"></i> ${member.contact.email}
+                    </a>
+                    <a href="tel:${member.contact.phone}" class="btn-contact btn-contact-outline">
+                      <i class="fas fa-phone-alt"></i> ${member.contact.phone}
+                    </a>
+                  </div>
+
+                  <!-- بطاقة ثقة إضافية -->
+                  <div class="mt-6 bg-brand-50 rounded-xl p-4 border border-brand-500/5">
+                    <p class="text-sm text-brand-600/70 flex items-center gap-2">
+                      <i class="fas fa-shield-halved text-gold-500"></i>
+                      عضو موثوق في فريق شركة الإنشاء والتميز
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- زر العودة -->
+              <div class="mt-8 pt-6 border-t border-brand-500/10 text-center">
+                <a href="index.html#team" class="inline-flex items-center gap-2 text-brand-600 hover:text-gold-600 transition-colors font-bold">
+                  <i class="fas fa-arrow-right"></i>
+                  العودة إلى قائمة الكوادر
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+
+      // تهيئة AOS للعناصر الجديدة
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+    })();
+
+    // ════════════════════════════════════════════════════════════════
+    // شريط تقدّم القراءة
+    // ════════════════════════════════════════════════════════════════
+    (function initProgressBar() {
+      const progressBar = document.getElementById('reading-progress');
+      if (!progressBar) return;
+      function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = percent + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    })();
+
+    // ════════════════════════════════════════════════════════════════
+    // تهيئة AOS
+    // ════════════════════════════════════════════════════════════════
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 60,
+        easing: 'ease-out-cubic'
+      });
+    }
+  </script>
+
+</body>
+</html>
