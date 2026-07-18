@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>معرض الصور | شركة الإنشاء والتميز</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Cairo", "sans-serif"] },
+            colors: {
+              brand: {
+                50: "#e8f0fe",
+                100: "#b8d0e8",
+                200: "#88b0d2",
+                300: "#5890bc",
+                400: "#2870a6",
+                500: "#0a4a7a",
+                600: "#083a60",
+                700: "#062a46",
+                800: "#041a2c",
+                900: "#020a14",
+              },
+              gold: {
+                50: "#fdf7e6",
+                100: "#f9ecbf",
+                200: "#f5df99",
+                300: "#f0d173",
+                400: "#e8c44d",
+                500: "#D6A347",
+                600: "#c4923a",
+                700: "#b0812e",
+                800: "#9c7022",
+                900: "#885e16",
+              },
+            },
+            boxShadow: {
+              premium: "0 8px 40px -8px rgba(10,74,122,0.15)",
+              "premium-lg": "0 20px 60px -12px rgba(10,74,122,0.20)",
+              card: "0 4px 24px -6px rgba(10,74,122,0.06)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* ═══ الأنماط الأساسية ═══ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Cairo", sans-serif;
+        background: #f5f9ff;
+        color: #0a1a2e;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        background: #dce6f0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0a4a7a;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #083a60;
+      }
+
+      /* ═══ شريط تقدّم القراءة ═══ */
+      .reading-progress {
+        position: fixed;
+        top: 0;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        height: 4px;
+        background: rgba(214, 163, 71, 0.1);
+        z-index: 100;
+      }
+      .reading-progress__bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #d6a347, #c4923a, #d6a347);
+        background-size: 200% 100%;
+        animation: shimmer 3s linear infinite;
+        transition: width 100ms linear;
+        box-shadow: 0 0 10px rgba(214, 163, 71, 0.5);
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 0% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* ═══ شريط الرجوع ═══ */
+      .back-bar {
+        position: fixed;
+        top: 4px;
+        inset-inline: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(10, 74, 122, 0.08);
+        padding: 12px 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #0a4a7a;
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 8px 16px;
+        border-radius: 10px;
+        background: rgba(10, 74, 122, 0.05);
+        transition: all 300ms ease;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        background: #0a4a7a;
+        color: #fff;
+        transform: translateX(4px);
+      }
+
+      /* ═══ هيدر المعرض ═══ */
+      .gallery-header {
+        padding-top: 100px;
+        padding-bottom: 40px;
+        background: linear-gradient(135deg, #0a4a7a, #062a46);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(
+          ellipse,
+          rgba(214, 163, 71, 0.08),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .gallery-header .container {
+        position: relative;
+        z-index: 2;
+      }
+      .gallery-header h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 900;
+      }
+      .gallery-header .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 4px 16px;
+        border-radius: 999px;
+        color: #d6a347;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      /* ═══ شبكة الصور ═══ */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      @media (min-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .gallery-grid {
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.75rem;
+        }
+      }
+
+      .gallery-item {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 16px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(10, 74, 122, 0.06);
+        transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+        background: linear-gradient(135deg, #dce6f0, #c1d3e6);
+      }
+      /* ✅ الصورة دائماً مرئية */
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+        /* لا توجد opacity: 0 هنا */
+      }
+      .gallery-item:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 48px -12px rgba(10, 74, 122, 0.2);
+        border-color: rgba(214, 163, 71, 0.3);
+        z-index: 5;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      .gallery-item .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0) 50%,
+          rgba(2, 10, 20, 0.6) 100%
+        );
+        opacity: 0;
+        transition: opacity 400ms ease;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 16px;
+      }
+      .gallery-item:hover .overlay {
+        opacity: 1;
+      }
+      .gallery-item .overlay .icon {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(8px);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 300ms ease;
+      }
+      .gallery-item:hover .overlay .icon {
+        background: rgba(214, 163, 71, 0.3);
+        border-color: rgba(214, 163, 71, 0.4);
+        transform: scale(1.1);
+      }
+      .gallery-item .counter-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 0.6rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      /* ═══ Lightbox ═══ */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 10, 20, 0.95);
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+      }
+      .lightbox.is-open {
+        display: flex;
+        animation: fadeIn 300ms ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .lightbox__img {
+        max-width: 92vw;
+        max-height: 80vh;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: zoomIn 400ms cubic-bezier(0.22, 1, 0.36, 1);
+        object-fit: contain;
+        background: #0a1a2e;
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.9) translateY(10px);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+      .lightbox__caption {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        margin-top: 16px;
+        text-align: center;
+        font-weight: 500;
+      }
+      .lightbox__close {
+        position: absolute;
+        top: 20px;
+        inset-inline-end: 24px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        font-size: 1.3rem;
+        transition: all 300ms ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox__close:hover {
+        background: #d6a347;
+        transform: rotate(90deg);
+        border-color: #d6a347;
+      }
+      .lightbox__nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: all 300ms ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .lightbox__nav:hover {
+        background: #d6a347;
+        border-color: #d6a347;
+        transform: translateY(-50%) scale(1.05);
+      }
+      .lightbox__nav--prev {
+        inset-inline-start: 20px;
+      }
+      .lightbox__nav--next {
+        inset-inline-end: 20px;
+      }
+      .lightbox__counter {
+        position: absolute;
+        bottom: 70px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      @media (max-width: 640px) {
+        .lightbox__nav {
+          width: 40px;
+          height: 40px;
+          font-size: 0.9rem;
+        }
+        .lightbox__nav--prev {
+          inset-inline-start: 8px;
+        }
+        .lightbox__nav--next {
+          inset-inline-end: 8px;
+        }
+        .lightbox__img {
+          max-width: 98vw;
+          max-height: 70vh;
+        }
+        .lightbox__close {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+          top: 12px;
+          inset-inline-end: 12px;
+        }
+      }
+
+      /* ═══ حالة "غير موجود" ═══ */
+      .notfound {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 18px;
+        text-align: center;
+        padding: 80px 16px;
+        margin-top: 60px;
+      }
+      .notfound__icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(214, 163, 71, 0.18),
+          rgba(10, 74, 122, 0.08)
+        );
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #d6a347;
+        margin-bottom: 8px;
+      }
+      .notfound h1 {
+        font-size: 2.2rem;
+        color: #0a4a7a;
+        font-weight: 900;
+      }
+      .notfound p {
+        color: #4a6a8a;
+        max-width: 500px;
+        line-height: 1.7;
+      }
+      .notfound a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #0a4a7a;
+        color: #fff;
+        padding: 14px 26px;
+        border-radius: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 300ms ease;
+        margin-top: 8px;
+      }
+      .notfound a:hover {
+        background: #062a46;
+        transform: translateY(-2px);
+      }
+
+      /* ═══ الفوتر ═══ */
+      .footer-mini {
+        background: #020a14;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 36px 16px;
+        text-align: center;
+        font-size: 0.88rem;
+        margin-top: 40px;
+      }
+      .footer-mini strong {
+        color: #fff;
+      }
+
+      .scroll-top-btn {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #d6a347, #b0812e);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 8px 32px -6px rgba(214, 163, 71, 0.3);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px) scale(0.9);
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        z-index: 999;
+      }
+      .scroll-top-btn.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+      .scroll-top-btn:hover {
+        transform: translateY(-4px) scale(1.04);
+        box-shadow: 0 16px 48px -8px rgba(214, 163, 71, 0.4);
+      }
+      .scroll-top-btn:active {
+        transform: scale(0.92);
+      }
+    </style>
+  </head>
+  <body>
+<!-- شريط تقدّم القراءة -->
+<div class="reading-progress">
+  <div class="reading-progress__bar" id="reading-progress"></div>
+</div>
+
+<!-- ═══ شريط الرجوع المُحسَّن ═══ -->
+<div class="back-bar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <!-- زر العودة -->
+    <a href="index.html#projects" class="back-link group">
+      <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+      <span class="relative">
+        العودة إلى سابقة الأعمال
+        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
+      </span>
+    </a>
+    
+    <!-- الشعار + اسم الشركة -->
+    <a href="index.html" class="flex items-center gap-2.5 group">
+      <img src="images/logo.png" alt="شعار شركة الإنشاء والتميز" class="h-9 w-auto md:h-10 transition-transform duration-300 group-hover:scale-105" />
+      <div class="hidden sm:block">
+        <span class="text-brand-700 font-extrabold text-sm leading-tight block">الإنشاء <span class="text-gold-500">والتميز</span></span>
+        <span class="text-brand-400/60 text-[0.55rem] font-medium tracking-wider block">المقاولات العامة · البنية التحتية</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══ الهيدر (يتم تعبئته ديناميكياً) ═══ -->
+<section class="gallery-header" id="gallery-header">
+  <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <span class="badge inline-block mb-3" id="category-badge">
+      <i class="fas fa-images ml-1.5"></i> معرض الصور
+    </span>
+    <h1 id="category-title">تحميل...</h1>
+    <p class="text-white/70 text-sm md:text-base mt-2 max-w-2xl mx-auto" id="category-description">
+      استعرض صور مشاريعنا المنفذة على أرض الواقع
+    </p>
+    <div class="flex items-center justify-center gap-6 mt-4">
+      <span class="text-white/50 text-sm" id="image-counter">
+        <i class="fas fa-camera text-gold-400 ml-1.5"></i> 0 صورة
+      </span>
+      <span class="w-px h-5 bg-white/10"></span>
+      <span class="text-white/40 text-xs" id="category-count-label">
+        <i class="fas fa-folder-open text-gold-400 ml-1.5"></i> فئة المشاريع
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ المحتوى الرئيسي ═══ -->
+<main class="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <!-- إحصائيات سريعة فوق الشبكة -->
+  <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-brand-500/5">
+    <div class="flex items-center gap-4 text-sm text-brand-500/70">
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-check-circle text-gold-500 text-xs"></i>
+        <span id="loaded-count">0</span> صورة
+      </span>
+      <span class="w-px h-4 bg-brand-500/10"></span>
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-clock text-gold-500 text-xs"></i>
+        <span id="category-name-display">تحميل...</span>
+      </span>
+    </div>
+    <div class="text-xs text-brand-400/60">
+      <i class="fas fa-info-circle text-gold-500 ml-1"></i>
+      اضغط على الصورة للتكبير
+    </div>
+  </div>
+
+  <div id="gallery-grid" class="gallery-grid">
+    <!-- تُبنى ديناميكياً بواسطة JavaScript -->
+  </div>
+
+  <!-- رسالة في حالة عدم وجود صور -->
+  <div id="empty-message" class="text-center py-16 hidden">
+    <div class="w-20 h-20 mx-auto mb-4 bg-brand-50 rounded-full flex items-center justify-center">
+      <i class="fas fa-images text-brand-300 text-3xl"></i>
+    </div>
+    <p class="text-brand-600/60 text-lg">لا توجد صور في هذه الفئة حالياً</p>
+  </div>
+</main>
+
+<!-- ═══ Lightbox ═══ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" id="lightbox-close" aria-label="إغلاق">
+    <i class="fas fa-times"></i>
+  </button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="الصورة السابقة">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+  <img class="lightbox__img" id="lightbox-img" src="" alt="صورة مكبرة" />
+  <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="الصورة التالية">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <div class="lightbox__counter" id="lightbox-counter">1 / 1</div>
+  <div class="lightbox__caption" id="lightbox-caption"></div>
+</div>
+
+<!-- ═══ زر العودة للأعلى ═══ -->
+<button id="scroll-top" class="scroll-top-btn" aria-label="العودة إلى الأعلى">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ═══ فوتر مُحسَّن ═══ -->
+<footer class="footer-mini">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <!-- حقوق النشر -->
+      <div class="text-white/40 text-sm">
+        <span class="text-white/60 font-bold">شركة الإنشاء والتميز</span>
+        <span class="mx-2 text-white/10">|</span>
+        <span>© 2026 جميع الحقوق محفوظة</span>
+      </div>
+      
+      <!-- معلومات إضافية -->
+      <div class="flex items-center gap-4 text-xs text-white/30">
+        <span class="flex items-center gap-1.5">
+          <i class="fas fa-phone-alt text-gold-400/40"></i>
+          059 123 333 4
+        </span>
+        <span class="w-px h-3 bg-white/10"></span>
+        <span class="flex items-center gap-1.5">
+          <i class="fas fa-envelope text-gold-400/40"></i>
+          F-hamed1433@hotmail.com
+        </span>
+      </div>
+      
+      <!-- المطور -->
+      <div class="text-white/30 text-xs flex items-center gap-2">
+        <i class="fas fa-code text-gold-400/40"></i>
+        <span>تصميم وتطوير</span>
+        <span class="text-white/40 font-medium">المهندس نادر وضاح</span>
+        <span class="w-px h-3 bg-white/10"></span>
+        <a href="https://wa.me/967560889123" target="_blank" class="text-gold-400/60 hover:text-gold-400 transition-colors">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    
+    <!-- شهادات الجودة -->
+    <div class="flex flex-wrap items-center justify-center gap-4 mt-4 pt-4 border-t border-white/5 text-[0.55rem] text-white/20">
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-certificate text-gold-400/30"></i>
+        ISO 9001
+      </span>
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-certificate text-gold-400/30"></i>
+        ISO 14001
+      </span>
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-certificate text-gold-400/30"></i>
+        ISO 45001
+      </span>
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-shield-halved text-gold-400/30"></i>
+        توطين 29%
+      </span>
+      <span class="flex items-center gap-1.5">
+        <i class="fas fa-percent text-gold-400/30"></i>
+        محتوى محلي 48.45%
+      </span>
+    </div>
+  </div>
+</footer>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/gallery-data.js"></script>
+
+<script>
+  /* ═══════════════════════════════════════════════════════════════════
+     تشغيل صفحة المعرض (gallery.html) – النسخة النهائية
+     مع دعم كامل للجوال والكمبيوتر وإصلاح ظهور الصور
+     ═══════════════════════════════════════════════════════════════════ */
+  (function initGallery() {
+    "use strict";
+
+    // ═══ 1. تهيئة مكتبة AOS مع إعدادات متوافقة مع جميع الأجهزة ═══
+    if (typeof AOS !== "undefined") {
+      AOS.init({
+        duration: 800, // مدة الحركة
+        once: true, // تنفيذ الحركة مرة واحدة فقط
+        offset: 50, // بدء الحركة بعد تمرير 50px
+        easing: "ease-out",
+        // لا نستخدم disable: "mobile" حتى تعمل الحركات على الجوال أيضاً
+        // يمكن إضافة disable: false للتأكيد
+        disable: false,
+      });
+    }
+
+    // ═══ 2. قراءة معرف الفئة من الرابط ═══
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id"), 10);
+
+    // البيانات قادمة من ملف gallery-data.js
+    const categories =
+      typeof GALLERY_CATEGORIES !== "undefined" ? GALLERY_CATEGORIES : [];
+    const category = categories.find((c) => c.id === id);
+
+    // ═══ 3. عناصر الصفحة ═══
+    const grid = document.getElementById("gallery-grid");
+    const titleEl = document.getElementById("category-title");
+    const badgeEl = document.getElementById("category-badge");
+    const descEl = document.getElementById("category-description");
+    const counterEl = document.getElementById("image-counter");
+    const emptyMsg = document.getElementById("empty-message");
+
+    // عناصر الـ Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxCounter = document.getElementById("lightbox-counter");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const closeBtn = document.getElementById("lightbox-close");
+    const prevBtn = document.getElementById("lightbox-prev");
+    const nextBtn = document.getElementById("lightbox-next");
+
+    let currentImages = [];
+    let currentIndex = 0;
+
+    // ═══ 4. حالة عدم وجود الفئة ═══
+    if (!category) {
+      document.title = "الفئة غير موجودة | معرض الأعمال";
+      if (titleEl) titleEl.textContent = "الفئة غير موجودة";
+      if (descEl)
+        descEl.textContent = "عذراً، لم نتمكن من العثور على الفئة المطلوبة.";
+      if (counterEl) counterEl.textContent = "";
+      if (grid) {
+        grid.innerHTML = `
+          <div class="notfound" style="grid-column: 1 / -1; margin-top: 0;">
+            <div class="notfound__icon"><i class="fas fa-folder-open"></i></div>
+            <h1>الفئة غير موجودة</h1>
+            <p>لم نتمكن من العثور على الفئة المطلوبة. قد يكون الرابط غير صحيح.</p>
+            <a href="index.html#projects"><i class="fas fa-arrow-right"></i> العودة إلى سابقة الأعمال</a>
+          </div>
+        `;
+      }
+      return; // إنهاء التنفيذ
+    }
+
+    // ═══ 5. تحديث معلومات الفئة في الهيدر ═══
+    document.title = `${category.name} | معرض أعمال الشركة`;
+    if (titleEl) titleEl.textContent = category.name;
+    if (badgeEl) badgeEl.textContent = "📸 معرض الصور";
+    if (descEl) descEl.textContent = category.description || "";
+    if (counterEl) counterEl.textContent = `${category.count} صورة`;
+
+    // ═══ 6. توليد مسارات الصور ═══
+    const imagePaths = [];
+    const extensionsToTry = [category.extension || "jpeg", "jpg"];
+    for (let i = 1; i <= category.count; i++) {
+      const basePath = `./images/projact/gallery/${category.folder}/1 (${i})`;
+      imagePaths.push(`${basePath}.${extensionsToTry[0]}`);
+    }
+    currentImages = imagePaths;
+
+    // ═══ 7. بناء شبكة الصور مع تفعيل AOS ═══
+    if (grid) {
+      if (category.count === 0) {
+        emptyMsg.classList.remove("hidden");
+        grid.innerHTML = "";
+      } else {
+        emptyMsg.classList.add("hidden");
+        let html = "";
+        imagePaths.forEach((path, index) => {
+          // مسار احتياطي (jpeg ↔ jpg)
+          const fallbackPath = path.replace(/\.(jpeg|jpg)$/, (match) => {
+            return match === ".jpeg" ? ".jpg" : ".jpeg";
+          });
+          // صورة SVG احتياطية
+          const svgFallback =
+            "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23dce6f0' width='400' height='300'/><text x='200' y='150' fill='%230a4a7a' font-size='20' text-anchor='middle' font-family='sans-serif'>" +
+            category.name +
+            "</text></svg>";
+
+          // نضيف data-aos على العنصر الأب (gallery-item) وليس على img
+          html += `
+            <div class="gallery-item" data-index="${index}" 
+                 data-aos="fade-up" 
+                 data-aos-delay="${(index % 10) * 50}">
+              <img src="${path}" alt="${category.name} - صورة ${index + 1}" loading="lazy"
+                   onerror="this.onerror=null; this.src='${fallbackPath}'; this.onerror=function(){ this.src='${svgFallback}'; }" />
+              <div class="overlay">
+                <span class="icon"><i class="fas fa-expand"></i></span>
+              </div>
+              <span class="counter-badge">${index + 1} / ${category.count}</span>
+            </div>
+          `;
+        });
+        grid.innerHTML = html;
+
+        // ربط حدث النقر لكل صورة لفتح الـ Lightbox
+        document.querySelectorAll(".gallery-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            const idx = parseInt(this.dataset.index, 10);
+            openLightbox(idx);
+          });
+        });
+      }
+    }
+
+    // ═══ 8. تحديث AOS بعد إضافة العناصر الجديدة ═══
+    if (typeof AOS !== "undefined") {
+      // نستخدم setTimeout للتأكد من أن DOM قد تم تحديثه بالكامل
+      setTimeout(function () {
+        AOS.refresh();
+      }, 100);
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    // ═══ 9. وظائف الـ Lightbox ═══
+    // ════════════════════════════════════════════════════════════════
+
+    function openLightbox(index) {
+      if (!currentImages.length) return;
+      currentIndex = index;
+      const img = currentImages[index];
+      lightboxImg.src = img;
+      lightboxImg.onerror = function () {
+        const fallback = img.replace(/\.(jpeg|jpg)$/, (match) => {
+          return match === ".jpeg" ? ".jpg" : ".jpeg";
+        });
+        if (this.src !== fallback) {
+          this.src = fallback;
+        } else {
+          this.src =
+            "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%230a4a7a' width='400' height='300'/><text x='200' y='150' fill='%23d6a347' font-size='24' text-anchor='middle' font-family='sans-serif'>صورة غير متوفرة</text></svg>";
+        }
+      };
+      lightboxCounter.textContent = `${index + 1} / ${currentImages.length}`;
+      lightboxCaption.textContent = `${category.name} - صورة ${index + 1}`;
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
+
+    function navigateLightbox(direction) {
+      if (!currentImages.length) return;
+      currentIndex =
+        (currentIndex + direction + currentImages.length) % currentImages.length;
+      openLightbox(currentIndex);
+    }
+
+    // ربط أزرار الـ Lightbox
+    if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+    if (prevBtn) prevBtn.addEventListener("click", () => navigateLightbox(-1));
+    if (nextBtn) nextBtn.addEventListener("click", () => navigateLightbox(1));
+
+    // إغلاق الـ Lightbox عند النقر على الخلفية
+    if (lightbox) {
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
+
+    // التنقل عبر لوحة المفاتيح
+    document.addEventListener("keydown", function (e) {
+      if (!lightbox.classList.contains("is-open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") navigateLightbox(-1);
+      if (e.key === "ArrowRight") navigateLightbox(1);
+    });
+
+    // ════════════════════════════════════════════════════════════════
+    // ═══ 10. شريط تقدّم القراءة ═══
+    // ════════════════════════════════════════════════════════════════
+    const progressBar = document.getElementById("reading-progress");
+    if (progressBar) {
+      function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = percent + "%";
+      }
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      updateProgress();
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    // ═══ 11. زر العودة للأعلى ═══
+    // ════════════════════════════════════════════════════════════════
+    const scrollTopBtn = document.getElementById("scroll-top");
+    if (scrollTopBtn) {
+      window.addEventListener(
+        "scroll",
+        function () {
+          const show = window.scrollY > 400;
+          scrollTopBtn.classList.toggle("visible", show);
+        },
+        { passive: true }
+      );
+      scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    // ═══ 12. معالجة إضافية لضمان ظهور الصور على الجوال ═══
+    // ════════════════════════════════════════════════════════════════
+    // في بعض متصفحات الجوال، قد لا تعمل الحركة بشكل صحيح،
+    // لذلك نضيف كلاساً إضافياً بعد تحميل الصفحة للتأكد من أن opacity تعود إلى 1.
+    window.addEventListener("load", function () {
+      // بعد تحميل كل شيء، نمر على جميع عناصر المعرض ونتأكد من ظهورها
+      document.querySelectorAll(".gallery-item").forEach(function (item) {
+        // إذا كانت الحركة لم تعمل، نضيف كلاس لإظهار الصورة
+        // يمكن استخدام AOS نفسها، لكننا نضمن ظهور الصور.
+        // نتحقق من opacity المحسوبة، إذا كانت 0 نضبطها على 1.
+        const computedStyle = window.getComputedStyle(item);
+        if (computedStyle.opacity === "0") {
+          item.style.opacity = "1";
+        }
+      });
+      // كما يمكن تحديث AOS مجدداً
+      if (typeof AOS !== "undefined") {
+        AOS.refresh();
+      }
+    });
+
+    // معالجة إضافية: إذا فشل تحميل AOS نهائياً (مثلاً بسبب انقطاع الشبكة)
+    // نضع مؤقتاً لإظهار الصور بعد 3 ثوانٍ كحل أخير.
+    setTimeout(function () {
+      document.querySelectorAll(".gallery-item").forEach(function (item) {
+        item.style.opacity = "1";
+      });
+    }, 3000);
+
+  })(); // نهاية التنفيذ الفوري
+</script>
+  </body>
+</html>
