@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جميع الكوادر | شركة الإنشاء والتميز</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Cairo", "sans-serif"] },
+            colors: {
+              brand: {
+                50: "#e8f0fe",
+                100: "#b8d0e8",
+                200: "#88b0d2",
+                300: "#5890bc",
+                400: "#2870a6",
+                500: "#0a4a7a",
+                600: "#083a60",
+                700: "#062a46",
+                800: "#041a2c",
+                900: "#020a14",
+              },
+              gold: {
+                50: "#fdf7e6",
+                100: "#f9ecbf",
+                200: "#f5df99",
+                300: "#f0d173",
+                400: "#e8c44d",
+                500: "#D6A347",
+                600: "#c4923a",
+                700: "#b0812e",
+                800: "#9c7022",
+                900: "#885e16",
+              },
+            },
+            boxShadow: {
+              premium: "0 8px 40px -8px rgba(10,74,122,0.15)",
+              "premium-lg": "0 20px 60px -12px rgba(10,74,122,0.20)",
+              card: "0 4px 24px -6px rgba(10,74,122,0.06)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* ═══ الأنماط الأساسية ═══ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Cairo", sans-serif;
+        background: #f5f9ff;
+        color: #0a1a2e;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+        background: #dce6f0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0a4a7a;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #083a60;
+      }
+
+      /* ═══ شريط تقدّم القراءة ═══ */
+      .reading-progress {
+        position: fixed;
+        top: 0;
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+        height: 4px;
+        background: rgba(214, 163, 71, 0.1);
+        z-index: 100;
+      }
+      .reading-progress__bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #d6a347, #c4923a, #d6a347);
+        background-size: 200% 100%;
+        animation: shimmer 3s linear infinite;
+        transition: width 100ms linear;
+        box-shadow: 0 0 10px rgba(214, 163, 71, 0.5);
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 0% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* ═══ شريط الرجوع ═══ */
+      .back-bar {
+        position: fixed;
+        top: 4px;
+        inset-inline: 0;
+        z-index: 60;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(10, 74, 122, 0.08);
+        padding: 12px 0;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #0a4a7a;
+        font-weight: 700;
+        font-size: 0.92rem;
+        padding: 8px 16px;
+        border-radius: 10px;
+        background: rgba(10, 74, 122, 0.05);
+        transition: all 300ms ease;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        background: #0a4a7a;
+        color: #fff;
+        transform: translateX(4px);
+      }
+
+      /* ═══ هيدر الصفحة ═══ */
+      .page-header {
+        padding-top: 100px;
+        padding-bottom: 40px;
+        background: linear-gradient(135deg, #0a4a7a, #062a46);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(
+          ellipse,
+          rgba(214, 163, 71, 0.08),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .page-header .container {
+        position: relative;
+        z-index: 2;
+      }
+      .page-header h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 900;
+      }
+      .page-header .badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 4px 16px;
+        border-radius: 999px;
+        color: #d6a347;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      /* ═══ شبكة البطاقات ═══ */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      @media (min-width: 640px) {
+        .team-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.25rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .team-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .team-grid {
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.75rem;
+        }
+      }
+
+      .team-card {
+        background: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(10, 74, 122, 0.06);
+        transition: all 500ms cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.06);
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      .team-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 48px -12px rgba(10, 74, 122, 0.15);
+        border-color: rgba(214, 163, 71, 0.3);
+      }
+      .team-card .avatar {
+        aspect-ratio: 1 / 1;
+        background: linear-gradient(135deg, #e8f0fe, #c1d3e6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #0a4a7a;
+        position: relative;
+        overflow: hidden;
+      }
+      .team-card .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 600ms ease;
+      }
+      .team-card:hover .avatar img {
+        transform: scale(1.08);
+      }
+      .team-card .avatar .initial {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: rgba(10, 74, 122, 0.15);
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        line-height: 1;
+        pointer-events: none;
+      }
+      .team-card .badge-role {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        padding: 2px 10px;
+        border-radius: 999px;
+        font-size: 0.55rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 2;
+      }
+      .team-card .badge-role.gold {
+        background: rgba(214, 163, 71, 0.85);
+        color: #fff;
+      }
+      .team-card .body {
+        padding: 12px 14px 14px;
+        text-align: center;
+      }
+      .team-card .body .name {
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: #062a46;
+        line-height: 1.3;
+        margin-bottom: 2px;
+      }
+      .team-card .body .role {
+        font-size: 0.7rem;
+        color: #d6a347;
+        font-weight: 600;
+      }
+      .team-card .body .meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 6px;
+        font-size: 0.55rem;
+        color: #8aa0c0;
+        font-weight: 500;
+        flex-wrap: wrap;
+      }
+      .team-card .body .meta .flag {
+        display: inline-block;
+        padding: 1px 6px;
+        background: rgba(10, 74, 122, 0.06);
+        border-radius: 4px;
+      }
+      .team-card .body .meta .exp {
+        display: inline-block;
+        padding: 1px 6px;
+        background: rgba(214, 163, 71, 0.08);
+        border-radius: 4px;
+        color: #b0812e;
+      }
+
+      /* ═══ عنوان الفئة ═══ */
+      .category-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 32px 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid rgba(10, 74, 122, 0.06);
+      }
+      .category-title .line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to left, rgba(214, 163, 71, 0.3), transparent);
+      }
+      .category-title h2 {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #0a4a7a;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .category-title h2 .count {
+        font-size: 0.7rem;
+        background: rgba(10, 74, 122, 0.06);
+        padding: 0 10px;
+        border-radius: 999px;
+        color: #4a6a8a;
+        font-weight: 600;
+      }
+      .category-title .line-right {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, rgba(214, 163, 71, 0.3), transparent);
+      }
+
+      /* ═══ الفوتر ═══ */
+      .footer-mini {
+        background: #020a14;
+        color: rgba(255, 255, 255, 0.6);
+        padding: 36px 16px;
+        text-align: center;
+        font-size: 0.88rem;
+        margin-top: 40px;
+      }
+      .footer-mini strong {
+        color: #fff;
+      }
+
+      .scroll-top-btn {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #d6a347, #b0812e);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 8px 32px -6px rgba(214, 163, 71, 0.3);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px) scale(0.9);
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        z-index: 999;
+      }
+      .scroll-top-btn.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+      .scroll-top-btn:hover {
+        transform: translateY(-4px) scale(1.04);
+        box-shadow: 0 16px 48px -8px rgba(214, 163, 71, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- شريط تقدّم القراءة -->
+    <div class="reading-progress">
+      <div class="reading-progress__bar" id="reading-progress"></div>
+    </div>
+
+    <!-- ═══ شريط الرجوع ═══ -->
+    <div class="back-bar">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
+      >
+        <a href="index.html#leadership" class="back-link group">
+          <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform duration-300"></i>
+          <span class="relative">
+            العودة إلى الهيكل الإداري
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300"></span>
+          </span>
+        </a>
+        <a href="index.html" class="flex items-center gap-2.5 group">
+          <img
+            src="images/logo.png"
+            alt="شعار الشركة"
+            class="h-9 w-auto md:h-10 transition-transform duration-300 group-hover:scale-105"
+          />
+          <div class="hidden sm:block">
+            <span class="text-brand-700 font-extrabold text-sm leading-tight block"
+              >الإنشاء <span class="text-gold-500">والتميز</span></span
+            >
+            <span class="text-brand-400/60 text-[0.55rem] font-medium tracking-wider block"
+              >المقاولات العامة · البنية التحتية</span
+            >
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ═══ هيدر الصفحة ═══ -->
+    <section class="page-header" id="page-header">
+      <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="badge inline-block mb-3">
+          <i class="fas fa-users ml-1.5"></i> الكوادر البشرية
+        </span>
+        <h1>جميع الكوادر</h1>
+        <p class="text-white/70 text-sm md:text-base mt-2 max-w-2xl mx-auto">
+          نخبة من الكفاءات الوطنية والمهنية تقود شركتنا نحو التميز
+        </p>
+        <div class="flex items-center justify-center gap-6 mt-4">
+          <span class="text-white/50 text-sm" id="total-count">
+            <i class="fas fa-user text-gold-400 ml-1.5"></i> 0 موظف
+          </span>
+          <span class="w-px h-5 bg-white/10"></span>
+          <span class="text-white/40 text-xs" id="categories-count">
+            <i class="fas fa-layer-group text-gold-400 ml-1.5"></i> 0 فئة
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ المحتوى الرئيسي ═══ -->
+    <main class="py-8 lg:py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div id="team-container">
+        <!-- تُبنى ديناميكياً بواسطة JavaScript -->
+      </div>
+    </main>
+
+    <!-- ═══ زر العودة للأعلى ═══ -->
+    <button
+      id="scroll-top"
+      class="scroll-top-btn"
+      aria-label="العودة إلى الأعلى"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ═══ فوتر ═══ -->
+    <footer class="footer-mini">
+      <div>
+        © شركة الإنشاء والتميز للمقاولات العامة ·
+        <strong>تصميم وتطوير المهندس نادر وضاح</strong>
+      </div>
+    </footer>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/team-data.js"></script>
+
+    <script>
+      (function initTeamAll() {
+        const members =
+          typeof TEAM_MEMBERS !== "undefined" ? TEAM_MEMBERS : [];
+        const container = document.getElementById("team-container");
+        const totalEl = document.getElementById("total-count");
+        const categoriesEl = document.getElementById("categories-count");
+
+        if (!container || !members.length) {
+          if (container) {
+            container.innerHTML = `
+              <div class="text-center py-16">
+                <div class="text-brand-400/50 text-6xl mb-4"><i class="fas fa-users-slash"></i></div>
+                <p class="text-brand-600/60 text-lg">لا توجد بيانات لعرضها حالياً</p>
+              </div>
+            `;
+          }
+          return;
+        }
+
+        // ─── ترتيب الفئات حسب الأهمية ───
+        const categoryOrder = [
+          { key: "management", label: "الإدارة العليا", icon: "fa-crown" },
+          { key: "engineering", label: "الهندسة والإشراف", icon: "fa-hard-hat" },
+          { key: "admin", label: "الإدارة المالية والموارد البشرية", icon: "fa-file-invoice" },
+          { key: "supervision", label: "المراقبة الميدانية", icon: "fa-clipboard-check" },
+          { key: "technical", label: "المهن الفنية والتخصصية", icon: "fa-microscope" },
+          { key: "drivers", label: "السائقون والمعدات", icon: "fa-truck" },
+          { key: "workers", label: "العمالة الميدانية", icon: "fa-hard-hat" },
+        ];
+
+        // ─── تجميع الأعضاء حسب الفئة ───
+        const grouped = {};
+        members.forEach((m) => {
+          const cat = m.category || "workers";
+          if (!grouped[cat]) grouped[cat] = [];
+          grouped[cat].push(m);
+        });
+
+        // ─── تحديث الإحصائيات ───
+        if (totalEl) totalEl.textContent = `${members.length} موظف`;
+        if (categoriesEl) {
+          const count = Object.keys(grouped).length;
+          categoriesEl.textContent = `${count} فئة`;
+        }
+
+        // ─── بناء HTML ───
+        let html = "";
+
+        categoryOrder.forEach((catInfo) => {
+          const items = grouped[catInfo.key] || [];
+          if (!items.length) return;
+
+          html += `
+            <div class="category-title" data-aos="fade-up">
+              <span class="line"></span>
+              <h2>
+                <i class="fas ${catInfo.icon} text-gold-500"></i>
+                ${catInfo.label}
+                <span class="count">${items.length}</span>
+              </h2>
+              <span class="line-right"></span>
+            </div>
+            <div class="team-grid">
+          `;
+
+          items.forEach((member, index) => {
+            const initial = member.name.charAt(0);
+            const isManager = member.category === "management";
+            const isEngineer = member.category === "engineering";
+            const isKeyRole = isManager || isEngineer || member.id <= 10;
+
+            // صورة احتياطية
+            const avatarHtml = member.image
+              ? `<img src="${member.image}" alt="${member.name}" />`
+              : `<span style="font-size: 2.8rem; font-weight: 900; color: #0a4a7a;">${initial}</span>`;
+
+            html += `
+              <a href="team-detail.html?id=${member.id}" 
+                 class="team-card group" 
+                 data-aos="fade-up" 
+                 data-aos-delay="${(index % 10) * 40}"
+                 data-id="${member.id}">
+                <div class="avatar">
+                  ${avatarHtml}
+                  <span class="initial">${initial}</span>
+                  ${
+                    isManager
+                      ? `<span class="badge-role gold"><i class="fas fa-crown ml-1"></i> الرئيس</span>`
+                      : isEngineer
+                      ? `<span class="badge-role gold"><i class="fas fa-user-graduate ml-1"></i> مهندس</span>`
+                      : `<span class="badge-role">${member.role}</span>`
+                  }
+                </div>
+                <div class="body">
+                  <div class="name">${member.name}</div>
+                  <div class="role">${member.role}</div>
+                  <div class="meta">
+                    <span class="flag"><i class="fas fa-flag ml-0.5"></i> ${member.nationality || '—'}</span>
+                    <span class="exp"><i class="fas fa-clock ml-0.5"></i> ${member.experience || '—'}</span>
+                  </div>
+                </div>
+              </a>
+            `;
+          });
+
+          html += `</div>`;
+        });
+
+        container.innerHTML = html;
+
+        // ─── تحديث AOS ───
+        if (typeof AOS !== "undefined") {
+          AOS.refresh();
+        }
+
+        // ═══════════════════════════════════════════════════
+        // ═══ شريط تقدّم القراءة ═══
+        // ═══════════════════════════════════════════════════
+        const progressBar = document.getElementById("reading-progress");
+        if (progressBar) {
+          function updateProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight =
+              document.documentElement.scrollHeight - window.innerHeight;
+            const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = percent + "%";
+          }
+          window.addEventListener("scroll", updateProgress, { passive: true });
+          updateProgress();
+        }
+
+        // ═══════════════════════════════════════════════════
+        // ═══ زر العودة للأعلى ═══
+        // ═══════════════════════════════════════════════════
+        const scrollTopBtn = document.getElementById("scroll-top");
+        if (scrollTopBtn) {
+          window.addEventListener(
+            "scroll",
+            () => {
+              const show = window.scrollY > 400;
+              scrollTopBtn.classList.toggle("visible", show);
+            },
+            { passive: true }
+          );
+          scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
